@@ -27,7 +27,7 @@ either to customers, associates, or other members of staff.
 ### Who is behind Supportic.us?
 *Supportic.us* is written by [Leo Adamek](http://leo.adamek.me/), currently it is part of a class project at [Alton College](http://altoncollege.ac.uk) but it is hoped that this project will be taken further and possibly made commercial.
 
-### Is Supportic available to the public?
+### Is Supportic.us available to the public?
 *Supportic.us* is currently in development, it is hoped to be made public once development is complete to the point where it is a viable system for commercial-grade support. In the meantime, stay tuned.
 
 ### What is Supportic.us Written In?
