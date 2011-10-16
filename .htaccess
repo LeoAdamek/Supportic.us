@@ -1,0 +1,7 @@
+RewriteEngine On
+
+RewriteCond %{SERVER_PORT} ^80$
+RewriteRule ^(.*)$ https://%{SERVER_NAME}/$1 [L,R]
+
+RewriteRule ^$ app/webroot/ [L]
+RewriteRule ^(.*)$ app/webroot/$1 [L]
