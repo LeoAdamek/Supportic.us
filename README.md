@@ -21,7 +21,7 @@ either to customers, associates, or other members of staff.
 * Globalist design philosophy
 	*Supportic.us* is designed to be used by anyone all over the world.
 	As such, extra steps have been taken to allow for all type of cultural differences, through language, names, character encoding and more.
-* **Supportic.us is completely *FREE* **
+* __Supportic.us is completely FREE__
 
 
 ### Who is behind Supportic.us?
