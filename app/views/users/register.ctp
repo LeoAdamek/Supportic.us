@@ -8,6 +8,8 @@
 	 * The Registration page for Supportic.us
 	 */
 
+	debug($countries);
+
 	echo $this->Form->create('User', array('action' => 'register'));
 
 	echo $this->Form->input('name');
@@ -18,6 +20,7 @@
 		'class' => 'required'
 	));
 	echo $this->Form->input('email');
+	echo $this->Form->input('country_id');
 	echo $this->Form->end('Register My Account!');
 
 

@@ -46,6 +46,7 @@ class UsersController extends AppController {
 			if($this->data['User']['password'] == $this->Auth->password($this->data['User']['password_confirm']) ){
 				// Passwords match, make their account
 				$this->User->set('signup_date', date('Y-m-d H:i:s'));
+				$this->User->set('isActivaed',0);
 				if($this->User->save($this->data)){
 					// If the user account was sucessfully saved.
 					$this->_sendNewUserMail($this->User->read());
@@ -60,6 +61,10 @@ class UsersController extends AppController {
 				$this->Session->setFlash("The Entered Passwords did not match.");
 			}	
 		}else{
+			$countries = $this->User->Country->find('list', array(
+				'fields' => 'Country.name'
+			));
+			$this->set('countries', compact('countries'));
 			/*
 			 * The User did not submit data.
 			 * Display a form

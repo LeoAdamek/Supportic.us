@@ -91,6 +91,16 @@ class User extends AppModel {
 		),
 	);
 
+	var $belongsTo = array(
+		'Country' => array(
+			'className' => 'Country',
+			'foreignKey' => 'country_id'
+		)
+	);
+
+
+
+
 	function getActivationHash(){
 		/*
 		 * Generates an 8 character activation code for the user account
