@@ -56,6 +56,10 @@ class User extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+			'unique' => array(
+				'rule' => array('isUnique'),
+				'message' => 'This E-mail address has already been registered',
+			),
 		),
 		'password' => array(
 			'notempty' => array(
@@ -86,4 +90,16 @@ class User extends AppModel {
 			),
 		),
 	);
+
+	function getActivationHash(){
+		/*
+		 * Generates an 8 character activation code for the user account
+		 * This is used to check that the user's email address is valid.
+		 */
+		if(!isset($this->id)){
+			return false;
+		}else{
+			return substr(Security::hash(Configure::read('Seurity.salt') . $this->field('signup_date') . date('Ymd')), 0, 8);
+		}
+	}
 }

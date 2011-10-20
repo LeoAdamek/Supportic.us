@@ -2,17 +2,27 @@
 class UsersController extends AppController {
 
 	var $name = 'Users';
-	var $components = array('Auth', 'Session');
+	var $components = array('Auth', 'Session', 'Email');
 
 	function beforeFilter(){
-		$this->Auth->allow('register','login');
+		$this->Auth->allow('register','login','verify');
 	}
 
 	function login(){
 		/*
-		 * Stub Function.
-		 * Definition for Auth Module
+		 * Check the user has activated their account before letting them log in.
 		 */
+		if($this->data){
+			if($this->Auth->login($this->data)){
+				$user = $this->User->find(array('User.email' => $this->data['User']['email']), array('User.isActivated'));
+
+				if($user['User']['isActivated'] == 0){
+					$this->Session->setFlash('You account has not been activated yet. Please verify your e-mail before logging in.');
+					$this->Auth->logout();
+					$this->redirect(array('action' => 'login'));
+				}
+			}
+		}
 	}
 
 	function logout(){
@@ -41,6 +51,7 @@ class UsersController extends AppController {
 				));
 			}else{
 				// Passwords match, make their account
+				$this->User->set('signup_date', date('Y-m-d H:i:s'));
 				if($this->User->save($this->data)){
 					// If the user account was sucessfully saved.
 					$this->_sendNewUserMail($this->User->read());
@@ -53,6 +64,7 @@ class UsersController extends AppController {
 				}
 			}	
 		}else{
+			$this->data['User']['password'] = null; // Clear the password field.
 			/*
 			 * The User did not submit data.
 			 * Display a form
@@ -61,7 +73,14 @@ class UsersController extends AppController {
 	}
 
 	function _sendNewUserMail($user){
-				
+		$this->Email->from = 'Supportic.us <no_reply@supportic.us>';
+		$this->Email->to = $user["User"]["name"] . ' <' . $user["User"]["email"] . '>';
+		$this->Email->subject = "Welcome to Supportic.us ".$user["User"]["name"].".";
+		$this->Email->template = 'welcome_email';
+		$this->Email->sendAs = 'both'; // Send HTML and plain-text e-mails
+		$this->set('activation_url', 'https://' . env('SERVER_NAME') . '/users/activate/' . $user["User"]["id"] . '/' . $this->User->getActivationHash());
+		$this->set('User', $user);
+		$this->Email->send();	
 	}
 	
 

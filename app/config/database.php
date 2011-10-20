@@ -83,4 +83,15 @@ class DATABASE_CONFIG {
 		'prefix' => '',
 		'encoding' => 'utf8',
 	);
+
+	var $test = array(
+		'driver' => 'mysqli',
+		'persistent' => false,
+		'host' => 'localhost',
+		'login' => 'supporticus',
+		'password' => 'CUsYXdn568FBhDzY',
+		'database' => 'supporticus_testing',
+		'prefix' => '',
+		'encoding' => 'utf8',
+	);
 }

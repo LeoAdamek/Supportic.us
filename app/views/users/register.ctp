@@ -13,7 +13,10 @@
 	echo $this->Form->input('name');
 	echo $this->Form->input('addressName');
 	echo $this->Form->input('password');
-	echo $this->Form->input('password_confirm');
+	echo $this->Form->input('password_confirm', array(
+		'type' => 'password',
+		'class' => 'required'
+	));
 	echo $this->Form->input('email');
 	echo $this->Form->end('Register My Account!');
 
