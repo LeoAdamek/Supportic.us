@@ -89,3 +89,6 @@
 2011-10-20 14:40:42 Notice: Notice (1024): Schema generation error: invalid column type enum('KB','TICKET') does not exist in DBO in [/home/leo/domains/supportic.us/cake/libs/model/cake_schema.php, line 606]
 2011-10-20 14:40:43 Notice: Notice (1024): Schema generation error: invalid column type enum('Low','Medium','Important','Urgent') does not exist in DBO in [/home/leo/domains/supportic.us/cake/libs/model/cake_schema.php, line 606]
 2011-10-20 14:40:43 Notice: Notice (1024): Schema generation error: invalid column type enum('Unresolved','Resolved','Closed') does not exist in DBO in [/home/leo/domains/supportic.us/cake/libs/model/cake_schema.php, line 606]
+2011-10-20 19:08:16 Notice: Notice (1024): Schema generation error: invalid column type enum('KB','TICKET') does not exist in DBO in [/home/leo/domains/supportic.us/cake/libs/model/cake_schema.php, line 606]
+2011-10-20 19:08:16 Notice: Notice (1024): Schema generation error: invalid column type enum('Low','Medium','Important','Urgent') does not exist in DBO in [/home/leo/domains/supportic.us/cake/libs/model/cake_schema.php, line 606]
+2011-10-20 19:08:16 Notice: Notice (1024): Schema generation error: invalid column type enum('Unresolved','Resolved','Closed') does not exist in DBO in [/home/leo/domains/supportic.us/cake/libs/model/cake_schema.php, line 606]

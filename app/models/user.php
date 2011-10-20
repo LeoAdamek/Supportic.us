@@ -1,33 +1,12 @@
 <?php
 class User extends AppModel {
 	var $name = 'User';
-	var $primaryKey = 'User_ID';
-	var $displayField = 'User_Name';
+	var $displayField = 'name';
 	var $validate = array(
-		'User_ID' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'User_Name' => array(
+		'name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'You must supply your name.',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'User_AddressName' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				'message' => 'You Must Supply an Address Name',
+				'message' => 'Your Name is Required',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -42,46 +21,64 @@ class User extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'User_Email' => array(
-			'email' => array(
-				'rule' => array('email', true),
-				'message' => 'This e-mail address is not valid, you must supply a valid e-mail address',
+		'addressName' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'An Address Name is Required',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-			'notempty' => array(
-				'rule' => array('notempty'),
-				'message' => 'You must supply a valid e-mail address',
+			'custom' => array(
+				'rule' => array('custom'),
+				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'User_Password' => array(
+		'email' => array(
+			'email' => array(
+				'rule' => array('email'),
+				'message' => 'Your E-mail address must be valid',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'You must give a password',
+				'message' => 'A Valid E-mail address is required',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'password' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'A Password is required',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'minlength' => array(
-				'rule' => array('minlength', 6),
-				'message' => 'Passwords must be at least 6 characters.',
+				'rule' => array('minlength',6),
+				'message' => 'Passwords must be at least 6 characters in length.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'User_Country_ID' => array(
+		'contry_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
-				'message' => 'Invalid country.',
+				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
