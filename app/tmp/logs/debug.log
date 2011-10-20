@@ -124,3 +124,7 @@
 2011-10-20 21:16:59 Notice: Notice (1024): Schema generation error: invalid column type enum('Unresolved','Resolved','Closed') does not exist in DBO in [/home/leo/domains/supportic.us/cake/libs/model/cake_schema.php, line 606]
 2011-10-20 21:32:28 Notice: Notice (8): Undefined index: countries in [/home/leo/domains/supportic.us/app/controllers/users_controller.php, line 67]
 2011-10-20 21:38:56 Notice: Notice (8): Undefined variable: countries in [/home/leo/domains/supportic.us/app/views/users/register.ctp, line 11]
+2011-10-20 21:45:55 Notice: Notice (8): Undefined variable: user in [/home/leo/domains/supportic.us/app/views/elements/email/text/welcome_email.ctp, line 1]
+2011-10-20 21:45:55 Notice: Notice (8): Undefined variable: user in [/home/leo/domains/supportic.us/app/views/elements/email/html/welcome_email.ctp, line 3]
+2011-10-20 21:51:55 Notice: Notice (8): Undefined variable: user in [/home/leo/domains/supportic.us/app/views/elements/email/text/welcome_email.ctp, line 1]
+2011-10-20 21:51:55 Notice: Notice (8): Undefined variable: user in [/home/leo/domains/supportic.us/app/views/elements/email/html/welcome_email.ctp, line 3]

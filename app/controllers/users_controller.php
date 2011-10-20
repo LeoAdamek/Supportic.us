@@ -58,6 +58,8 @@ class UsersController extends AppController {
 				if($this->User->save($this->data)){
 					// If the user account was sucessfully saved.
 					$this->_sendNewUserMail($this->User->read());
+					$this->Session->setFlash('Your account has been created '.$this->data['User']['name'].' Please check your email to activate your account');
+					$this->redirect('/');
 				}else{
 					$this->Session->setFlash("There was an error creating your account");
 					$this->redirect(array(
@@ -85,7 +87,7 @@ class UsersController extends AppController {
 		$this->Email->template = 'welcome_email';
 		$this->Email->sendAs = 'both'; // Send HTML and plain-text e-mails
 		$this->set('activation_url', 'https://' . env('SERVER_NAME') . '/users/activate/' . $user["User"]["id"] . '/' . $this->User->getActivationHash());
-		$this->set('User', $user);
+		$this->set('user', $user);
 		$this->Email->send();	
 	}
 
