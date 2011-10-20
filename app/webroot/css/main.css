@@ -83,6 +83,53 @@ div#content_wrapper {
 	overflow: auto;
 }
 
+
+/*
+ * Table Styling
+ */
+table {
+	background: #fff;
+	border-right: 0;
+	clear: both;
+	color: #333;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+th {
+	border: 0;
+	border-bottom: 2px solid #111;
+	text-align: center;
+	padding: 4px;
+}
+
+th a {
+	display: block;
+	padding: 2px 4px;
+	text-decoration: dotted;
+}
+
+th a.asc:after {
+	content: '^';
+}
+
+th a.desc:after {
+	content: 'v'
+}
+
+table tr td {
+	background: #fff;
+	padding: 6px;
+	text-align: left;
+	vertical-align: middle;
+	border-bottom: 1px solid #EEE;
+}
+
+/* Fancy selector for alternating row colours. */
+table tr:nth-child(2n) td {
+	background: #BBB;
+}
+
 /*
  * SQL Log Styling
  */
