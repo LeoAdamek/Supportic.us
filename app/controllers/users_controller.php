@@ -37,6 +37,14 @@ class UsersController extends AppController {
 		/*
 		 * Method to register a new account
 		 */
+
+
+			$countries = $this->User->Country->find('list', array(
+				'fields' => 'Country.name'
+			));
+			$this->set('countries', compact('countries'));
+	
+
 		if(!empty($this->data)){
 			/*
 			 * The User Submitted Data.
@@ -61,10 +69,8 @@ class UsersController extends AppController {
 				$this->Session->setFlash("The Entered Passwords did not match.");
 			}	
 		}else{
-			$countries = $this->User->Country->find('list', array(
-				'fields' => 'Country.name'
-			));
-			$this->set('countries', compact('countries'));
+			$this->data['User']['password'] = null;
+			$this->data['User']['password_confirm'] = null;
 			/*
 			 * The User did not submit data.
 			 * Display a form

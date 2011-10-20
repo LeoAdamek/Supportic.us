@@ -8,7 +8,6 @@
 	 * The Registration page for Supportic.us
 	 */
 
-	debug($countries);
 
 	echo $this->Form->create('User', array('action' => 'register'));
 
