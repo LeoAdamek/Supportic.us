@@ -131,6 +131,10 @@ table tr:nth-child(2n) td {
 }
 
 /*
+ * [[ End Table Styling ]]
+ */
+
+/*
  * SQL Log Styling
  */
 .cake-sql-log table {
@@ -150,3 +154,124 @@ table tr:nth-child(2n) td {
 /*
  * [[END SQL Log Styling ]]
  */
+
+/*
+ * Form Styling
+ */
+form {
+	clear: both;
+	margin-right: 20px;
+	padding: 0;
+	width: 95%;
+}
+
+fieldset {
+	border: 1px solid #ccc;
+	margin-bottom: 1em;
+	padding: 16px 20px;
+}
+
+fieldset legend {
+	background: #fff;
+	color: #e32;
+	font-size: 160%;
+	font-weight: bold;
+}
+
+fieldset fieldset {
+	margin-top: 0px;
+	margin-bottom: 20px;
+	padding: 16px 10px;
+}
+
+fieldset fieldset legend {
+	font-size: 120%;
+	font-weight: normal;
+}
+
+fieldset fieldset div {
+	clear: left;
+	margin: 0 20px;
+}
+
+form div {
+	clear: both;
+	margin-bottom: 1em;
+	padding: 0.5em;
+	vertical-align: text-top;
+}
+
+form .input {
+	color: #444
+}
+
+form .required {
+	font-weight: bold;
+}
+
+form.required label:after {
+	color: #e32;
+	content: '*';
+}
+
+form div.submit {
+	border: 0;
+	clear:both;
+	margin-top: 10px;
+}
+
+label {
+	display: block;
+	font-size: 100%;
+	margin-bottom: 3px;
+}
+
+input, textarea {
+	clear: both;
+	font-size: 100%;
+	font-family: Helvetica, Arial, sans-serif;
+	padding: 1%;
+	width: 98%;
+}
+
+select {
+	clear: both;
+	font-size: 100%;
+	vertical-align: text-bottom;
+}
+
+select[multiple=multiple] {
+	width: 100%;
+}
+
+option {
+	font-size: 100%;
+	padding: 0 3px;
+}
+
+input[type=checkbox] {
+	clear: left;
+	float: left;
+	margin: 0px 6px 7px 2px;
+	width: auto;
+}
+
+div.checkbox label {
+	display: inline;
+}
+
+input[type=radio] {
+	float: left;
+	width: auto;
+	margin: 0 3px 7px 0;
+}
+
+div.radio label {
+	margin: 0 0 6px 20px;
+}
+
+input[type=submit] {
+	display: inline;
+	font-size: 140%;
+	width: auto;
+}
