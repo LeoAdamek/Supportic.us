@@ -8,13 +8,13 @@
 	 * The Registration page for Supportic.us
 	 */
 
-	echo $this->Form->create('Users', array('action' => 'register'));
+	echo $this->Form->create('user', array('action' => 'register'));
 
-	echo $this->Form->input('User_Name');
-	echo $this->Form->input('User_AddressName');
-	echo $this->Form->input('User_Password');
-	echo $this->Form->input('User_Password_Confirm', array('type' => 'password'));	
-	echo $this->Form->input('User_Email');
+	echo $this->Form->input('name');
+	echo $this->Form->input('addressName');
+	echo $this->Form->input('password');
+	echo $this->Form->input('password_confirm', array('type' => 'password'));	
+	echo $this->Form->input('email');
 	echo $this->Form->end('Register My Account!');
 
 

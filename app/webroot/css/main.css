@@ -106,7 +106,6 @@ th {
 th a {
 	display: block;
 	padding: 2px 4px;
-	text-decoration: dotted;
 }
 
 th a.asc:after {
@@ -209,7 +208,7 @@ form .required {
 	font-weight: bold;
 }
 
-form.required label:after {
+form .required label:after {
 	color: #e32;
 	content: '*';
 }
