@@ -82,6 +82,24 @@ class UsersController extends AppController {
 		$this->set('User', $user);
 		$this->Email->send();	
 	}
-	
+
+	function activate($user_id = null, $activation_code = null){
+		/*
+		 * Used to activate a user's account, thus verifying their E-mail address.
+		 */
+		$this->User->id = $user_id;
+
+		if($this->User->exists() && ($activation_code == $this->User->getActivationHash())){
+			$this->User->saveField('isActivated',1); // Activate their account
+
+			/*
+			 * Tell the user they can now log in
+			 */
+			$this->Session->setFlash('Thanks for verifying your E-mail. Please Log in to start using Supportic.us');
+			$this->redirect(array('action' => 'login'));
+		}
+	}
+	}
+
 
 }
