@@ -5,6 +5,7 @@ class UsersController extends AppController {
 	var $components = array('Auth', 'Session', 'Email');
 
 	function beforeFilter(){
+		parent::beforeFilter();
 		$this->Auth->allow('register','login','verify');
 	}
 
@@ -42,14 +43,7 @@ class UsersController extends AppController {
 			 * Handle it
 			 */
 			$this->User->create(); // Create a new user object
-			if($this->data['password'] != $this->Auth->password($this->data['password_confirm'])){
-				// The user's password and confirmation do not match.
-				$this->Session->setFlash('The entered passwords do not match.');
-				$this->redirect(array(
-					'controller' => 'users',
-					'action' => 'register'
-				));
-			}else{
+			if($this->data['User']['password'] == $this->Auth->password($this->data['User']['password_confirm']) ){
 				// Passwords match, make their account
 				$this->User->set('signup_date', date('Y-m-d H:i:s'));
 				if($this->User->save($this->data)){
@@ -62,9 +56,10 @@ class UsersController extends AppController {
 						'action' => 'register'
 					));
 				}
+			}else{
+				$this->Session->setFlash("The Entered Passwords did not match.");
 			}	
 		}else{
-			$this->data['User']['password'] = null; // Clear the password field.
 			/*
 			 * The User did not submit data.
 			 * Display a form

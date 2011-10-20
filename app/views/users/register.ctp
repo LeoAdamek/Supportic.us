@@ -8,7 +8,7 @@
 	 * The Registration page for Supportic.us
 	 */
 
-	echo $this->Form->create('user', array('action' => 'register'));
+	echo $this->Form->create('User', array('action' => 'register'));
 
 	echo $this->Form->input('name');
 	echo $this->Form->input('addressName');

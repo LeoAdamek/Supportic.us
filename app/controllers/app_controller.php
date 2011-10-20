@@ -16,9 +16,8 @@
 			 * Override some default values, such has the password hashing algorithm
 			 */
 
-			Security::setHash('sha256'); 	// More Secure Password Hashing
+			Security::setHash('sha256');	// More Secure password hashing.
 
-			$this->Auth->authenticate = ClassRegistry::init('User');
 			$this->Auth->fields = array(
 				'username' => 'email',			// Users use their E-mail address to log in.
 				'password' => 'password'

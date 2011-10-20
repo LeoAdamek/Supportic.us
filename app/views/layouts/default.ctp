@@ -22,6 +22,9 @@
 		</div>
 
 		<div id="content_wrapper">
+
+			<?=$this->Session->flash()?>
+
 			<?=$content_for_layout?>
 		</div>
 
