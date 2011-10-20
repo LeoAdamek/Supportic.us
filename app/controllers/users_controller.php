@@ -32,7 +32,7 @@ class UsersController extends AppController {
 			 * Handle it
 			 */
 			$this->User->create(); // Create a new user object
-			if($this->data['password'] != $this->Auth->password($this->data['password_confirm']){
+			if($this->data['password'] != $this->Auth->password($this->data['password_confirm'])){
 				// The user's password and confirmation do not match.
 				$this->Session->setFlash('The entered passwords do not match.');
 				$this->redirect(array(
@@ -41,7 +41,7 @@ class UsersController extends AppController {
 				));
 			}else{
 				// Passwords match, make their account
-				if($this->User->save($this->data){
+				if($this->User->save($this->data)){
 					// If the user account was sucessfully saved.
 					$this->_sendNewUserMail($this->User->read());
 				}else{
@@ -50,13 +50,13 @@ class UsersController extends AppController {
 						'controller' => 'users',
 						'action' => 'register'
 					));
-				}	
+				}
+			}	
 		}else{
 			/*
 			 * The User did not submit data.
 			 * Display a form
 			 */
-		}
 		}
 	}
 
