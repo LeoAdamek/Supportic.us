@@ -163,13 +163,13 @@ th a:hover {
 
 th a.asc {
 	background-image: url('../img/icons/bullet_arrow_up.png');
-	background-position: middle left;
+	background-position: left;
 	background-repeat: no-repeat;
 }
 
 th a.desc {
 	background-image: url('../img/icons/bullet_arrow_down.png');
-	background-position: middle left;
+	background-position: left;
 	background-repeat: no-repeat;
 }
 
@@ -359,6 +359,6 @@ form .submit input[type=submit]:hover {
 	width: auto;
 	display: none;
 	color: #FFF;
-	text-align: center;
+	text-align: left;
 	font-size: 12pt;
 }

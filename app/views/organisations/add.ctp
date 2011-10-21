@@ -7,7 +7,8 @@
 	));
 	echo $this->Form->input('is_private', array(
 		'type' => 'checkbox',
-		'label' => 'This organisation is private. <span style="color:#CCC">(Only Selected members can access this organisation)</span>'
+		'label' => 'This organisation is private. <span style="color:#CCC">(Only Selected members can access this organisation)</span>',
+		'title' => 'Private Organisations can only be viewed by selected users'
 	));
 	echo $this->Form->input('country_id', array(
 		'title' => 'The primary operating country of your organisation'
