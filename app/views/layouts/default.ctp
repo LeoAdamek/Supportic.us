@@ -5,7 +5,7 @@
 	<head>
 		<title>Supporic.us</title>
 
-		<meta http-eqiv="content-type" content="text/html;charset=utf-8" />
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 
 		<?=$this->Html->css('main.css')?>
 
@@ -20,7 +20,20 @@
 		</div>
 
 		<div id="navigation">
-				<h3>{{Navigation}}</h3>
+				<h3>Navigation</h3>
+				<div id="userpane">
+					<?php if($session->check('Auth.User.id')): ?>
+					<p style="color: white;">Logged In As: <?=$session->read('Auth.User.addressName')?> | <?=$this->Html->link('Log Out', array(
+						'controller' => 'users',
+						'action' => 'logout'
+					))?>
+					<?php else: ?>
+						<?=$this->Html->link('Log In', array(
+							'controller' => 'users',
+							'action' => 'login'
+						))?>
+					<?php endif; ?>
+				</div>
 		</div>
 
 		<div id="content_wrapper">

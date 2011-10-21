@@ -70,8 +70,18 @@ div#header {
 	padding-top: 10px;
 }
 
-div#header > h1 {
+div#header h1 {
 	color: #fff;
+}
+
+div#navigation {
+	background-color: rgba(0,0,0,0.5);
+	margin: 0;
+}
+
+div#userpane {
+	float: right:
+	color: white;
 }
 
 div#content_wrapper {
@@ -82,6 +92,18 @@ div#content_wrapper {
 
 	overflow: auto;
 }
+
+/*
+ * Flash Messages
+ */
+div#flashMessage {
+	background-color: orange;
+	color: white;
+	margin: 5px;
+	padding: 5px;
+	font-size: 120%;
+}
+
 
 
 /*

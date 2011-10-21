@@ -10,27 +10,21 @@ class UsersController extends AppController {
 	}
 
 	function login(){
-		/*
-		 * Check the user has activated their account before letting them log in.
-		 */
-		if($this->data){
-			if($this->Auth->login($this->data)){
-				$user = $this->User->find(array('User.email' => $this->data['User']['email']), array('User.isActivated'));
+		$isLoggedIn = $this->Auth->login($this->data);
+		if($isLoggedIn){
+			$user = $this->User->findById($this->Auth->read('User.id'));
 
-				if($user['User']['isActivated'] == 0){
-					$this->Session->setFlash('You account has not been activated yet. Please verify your e-mail before logging in.');
-					$this->Auth->logout();
-					$this->redirect(array('action' => 'login'));
-				}
-			}
+			$this->Session->setFlash("Thank you for logging in ".$user['User']['addressName'].".");
 		}
+
+		$this->set('isLoggedIn',$isLoggedIn);
 	}
 
 	function logout(){
 		/*
 		 * Log the user out of their account
 		 */
-		$this->Auth->logout();
+		$this->redirect($this->Auth->logout());
 	}
 
 	function register(){

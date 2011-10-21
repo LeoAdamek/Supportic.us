@@ -128,3 +128,5 @@
 2011-10-20 21:45:55 Notice: Notice (8): Undefined variable: user in [/home/leo/domains/supportic.us/app/views/elements/email/html/welcome_email.ctp, line 3]
 2011-10-20 21:51:55 Notice: Notice (8): Undefined variable: user in [/home/leo/domains/supportic.us/app/views/elements/email/text/welcome_email.ctp, line 1]
 2011-10-20 21:51:55 Notice: Notice (8): Undefined variable: user in [/home/leo/domains/supportic.us/app/views/elements/email/html/welcome_email.ctp, line 3]
+2011-10-20 22:20:14 Notice: Notice (8): Undefined property: View::$Auth in [/home/leo/domains/supportic.us/app/views/layouts/default.ctp, line 25]
+2011-10-20 22:22:05 Notice: Notice (8): Undefined property: View::$Auth in [/home/leo/domains/supportic.us/app/views/layouts/default.ctp, line 25]
