@@ -3,7 +3,7 @@ class Organisation extends AppModel {
 	var $name = 'Organisation';
 	var $displayField = 'name';
 	var $validate = array(
-		'contry_id' => array(
+		'country_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -63,9 +63,9 @@ class Organisation extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $belongsTo = array(
-		'Contry' => array(
-			'className' => 'Contry',
-			'foreignKey' => 'contry_id',
+		'Country' => array(
+			'className' => 'Country',
+			'foreignKey' => 'country_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
