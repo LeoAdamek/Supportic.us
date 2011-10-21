@@ -2,6 +2,8 @@
 class OrganisationsController extends AppController {
 
 	var $name = 'Organisations';
+	var $helpers = array('Html','Form');
+	var $components = array('Auth','Session');
 
 	function beforeFilter(){
 		parent::beforeFilter();
@@ -12,7 +14,7 @@ class OrganisationsController extends AppController {
 		/*
 		 * Controller Method for creating a new organisation
 		 */
-		$this->set('countries',$this->Country->find('list',array('fields' => 'Country.name'));
+		$this->set('countries',$this->Organisation->Country->find('list',array('fields' => 'Country.name')));
 
 
 		if(!empty($this->data)){

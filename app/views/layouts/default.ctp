@@ -39,6 +39,7 @@
 		<div id="content_wrapper">
 
 			<?=$this->Session->flash()?>
+			<?=$this->Session->flash('auth')?>
 
 			<?=$content_for_layout?>
 		</div>
