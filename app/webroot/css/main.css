@@ -80,7 +80,7 @@ div#navigation {
 }
 
 div#userpane {
-	float: right:
+	float: right;
 	color: white;
 }
 
@@ -135,14 +135,24 @@ th {
 th a {
 	display: block;
 	padding: 2px 4px;
+	color: #171717;
+	text-decoration: none;
 }
 
-th a.asc:after {
-	content: '^';
+th a:hover {
+	text-decoration: underline;
 }
 
-th a.desc:after {
-	content: 'v'
+th a.asc {
+	background-image: url('../img/icons/bullet_arrow_up.png');
+	background-position: middle left;
+	background-repeat: no-repeat;
+}
+
+th a.desc {
+	background-image: url('../img/icons/bullet_arrow_down.png');
+	background-position: middle left;
+	background-repeat: no-repeat;
 }
 
 table tr td {
