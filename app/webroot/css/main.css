@@ -104,7 +104,14 @@ div#flashMessage {
 	font-size: 120%;
 }
 
+div#authMessage {
+	background-color: #FFBB00;
+	padding:5px;
+	width: 100%;
+	font-size: 120%;
+	font-family: Monaco,Consolas,"Courier New",monospaced;
 
+}
 
 /*
  * Table Styling
