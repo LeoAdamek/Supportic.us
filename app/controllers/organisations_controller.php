@@ -10,12 +10,20 @@ class OrganisationsController extends AppController {
 		$this->Auth->deny('add','edit','delete','manage');
 	}
 
+	function index(){
+		/*
+		 * List the Organisations is a paginated way.
+		 */
+		$this->Organisation->recursive = 0;
+		$this->set('organisations', $this->paginate());
+	}
+
 	function add(){
 		/*
 		 * Controller Method for creating a new organisation
 		 */
 		$this->set('countries',$this->Organisation->Country->find('list',array('fields' => 'Country.name')));
-		$this->set('OrganisationCategories', $this->Organisation->OrganisationCategory->find('list', array('fields' => 'OrganisationCategory.name')));
+		$this->set('organisationCategories', $this->Organisation->OrganisationCategory->find('list', array('fields' => 'OrganisationCategory.name')));
 
 
 		if(!empty($this->data)){
