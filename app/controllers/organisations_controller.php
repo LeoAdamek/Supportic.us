@@ -18,6 +18,29 @@ class OrganisationsController extends AppController {
 		$this->set('organisations', $this->paginate());
 	}
 
+	function edit($id = NULL){
+
+		$organisation = $this->Organisation->findById($id);
+		$this->set('organisation', $organisation);
+		$user_id = $this->Auth->user('id');
+
+		$useer_isOwner = ($organisation['User']['id'] == $user_id);
+
+		if(!$id && empty($this->data)){
+			$this->Session->setFlash("Invalid Organisation");
+			$this->redirect(array('action' => 'index'));
+		}else{
+			if(!empty($this->data) && $user_isOwner){
+				if($this->Organisation->save($this->data)){
+					$this->Session->setFlash("Changes Made Sucessfully");
+					$this->redirect(array('action' => 'index'));
+				}
+			}
+		}
+	}
+
+
+
 	function add(){
 		/*
 		 * Controller Method for creating a new organisation
