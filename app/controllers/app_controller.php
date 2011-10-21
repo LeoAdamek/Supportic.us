@@ -25,7 +25,9 @@
 
 			$this->Auth->allow('*');
 
+			// Error messages for Authentication.
 			$this->Auth->loginError = "Invalid E-mail address, Password or your account has not been activated yet.";
+			$this->Auth->authError = "You must be logged in to access this.";
 
 			$this->Auth->userScope = array('User.isActivated' => true); // Users must have an activated account before they can log in.
 		}
