@@ -16,9 +16,9 @@
 </table>
 
 	<div class="paging">
-		<?=$this->Paginator->prev('<',array(), null, array('class' => 'disabled'))?>
+		<?=$this->Paginator->prev( $this->Html->image('icons/resultset_previous.png', array('alt' => '<')), null , null , array('class' => 'disabled', 'escape' => false))?>
 		| <?=$this->Paginator->numbers()?>
-		| <?=$this->Paginator->next('>',array(),null,array('class' => 'disabled'))?>
+		| <?=$this->Paginator->next( $this->Html->image('icons/resultset_next.png', array('alt' => '>')) , null , null , array('class' => 'disabled', 'escape' => false )  )?>
 	</div>
 
 	<?=$this->Html->link('Create a new Organisation', array('action' => 'add'))?>
