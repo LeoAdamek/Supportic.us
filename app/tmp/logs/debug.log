@@ -148,3 +148,6 @@
 2011-10-21 16:23:57 Notice: Notice (8): Undefined index: User in [/home/leo/domains/supportic.us/app/controllers/organisations_controller.php, line 26]
 2011-10-21 16:23:57 Notice: Notice (8): Undefined variable: organisation in [/home/leo/domains/supportic.us/app/views/organisations/edit.ctp, line 3]
 2011-10-21 16:24:26 Notice: Notice (8): Undefined index: User in [/home/leo/domains/supportic.us/app/controllers/organisations_controller.php, line 27]
+2011-10-21 22:30:04 Notice: Notice (8): Undefined index: User in [/home/leo/domains/supportic.us/app/controllers/organisations_controller.php, line 27]
+2011-10-21 22:39:21 Notice: Notice (8): Undefined variable: session in [/home/leo/domains/supportic.us/app/views/layouts/default.ctp, line 1]
+2011-10-21 22:40:33 Notice: Notice (8): Undefined property: View::$javascript in [/home/leo/domains/supportic.us/app/views/layouts/default.ctp, line 11]

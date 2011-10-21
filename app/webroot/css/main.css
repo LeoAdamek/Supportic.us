@@ -352,3 +352,13 @@ form .submit input[type=submit]:hover {
 	background-image: -moz-linear-gradient(bottom, #4a144e, #711f76);
 }
 
+.tooltip {
+	background-color: #000;
+	border: 1px solid #171717;
+	padding: 10px 15px;
+	width: auto;
+	display: none;
+	color: #FFF;
+	text-align: center;
+	font-size: 12pt;
+}

@@ -8,6 +8,9 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 
 		<?=$this->Html->css('main.css')?>
+		<?=$this->Javascript->link('jQuery.min.js')?>
+		<?=$this->Javascript->link('jquery.tools.min.js')?>
+		<?=$this->Javascript->link('forms.js')?>
 
 		<?=$scripts_for_layout?>
 		
