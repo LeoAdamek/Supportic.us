@@ -15,6 +15,7 @@ class OrganisationsController extends AppController {
 		 * Controller Method for creating a new organisation
 		 */
 		$this->set('countries',$this->Organisation->Country->find('list',array('fields' => 'Country.name')));
+		$this->set('OrganisationCategories', $this->Organisation->OrganisationCategory->find('list', array('fields' => 'OrganisationCategory.name')));
 
 
 		if(!empty($this->data)){

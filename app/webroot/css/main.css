@@ -303,3 +303,24 @@ input[type=submit] {
 	font-size: 140%;
 	width: auto;
 }
+
+form div.submit {
+	border: 0;
+	clear: both;
+	margin-top: 10px;
+}
+
+form .submit input[type=submit] {
+	background: #300d33;
+	background: -webkit-gradient(linear, left top, left bottom, form(#300d33), to(#8a2691));
+	background-image: -moz-linear-gradient(bottom, #57185b, #8a2691);
+	color: white;
+	text-shadow: #170618 0px 1px 0px;
+}
+
+form .submit input[type=submit]:hover {
+	background: #711f76;
+	background: -webkit-gradient(linear, left top, left bottom, from(#4a144e), to(#711f76));
+	background-image: -moz-linear-gradient(bottom, #4a144e, #711f76);
+}
+
