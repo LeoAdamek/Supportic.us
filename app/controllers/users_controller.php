@@ -10,14 +10,6 @@ class UsersController extends AppController {
 	}
 
 	function login(){
-		$isLoggedIn = $this->Auth->login($this->data);
-		if($isLoggedIn){
-			$user = $this->User->findById($this->Auth->read('User.id'));
-
-			$this->Session->setFlash("Thank you for logging in ".$user['User']['addressName'].".");
-		}
-
-		$this->set('isLoggedIn',$isLoggedIn);
 	}
 
 	function logout(){
