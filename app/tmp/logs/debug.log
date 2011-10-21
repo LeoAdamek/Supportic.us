@@ -130,3 +130,6 @@
 2011-10-20 21:51:55 Notice: Notice (8): Undefined variable: user in [/home/leo/domains/supportic.us/app/views/elements/email/html/welcome_email.ctp, line 3]
 2011-10-20 22:20:14 Notice: Notice (8): Undefined property: View::$Auth in [/home/leo/domains/supportic.us/app/views/layouts/default.ctp, line 25]
 2011-10-20 22:22:05 Notice: Notice (8): Undefined property: View::$Auth in [/home/leo/domains/supportic.us/app/views/layouts/default.ctp, line 25]
+2011-10-21 14:10:31 Notice: Notice (1024): Schema generation error: invalid column type enum('KB','TICKET') does not exist in DBO in [/home/leo/domains/supportic.us/cake/libs/model/cake_schema.php, line 606]
+2011-10-21 14:10:31 Notice: Notice (1024): Schema generation error: invalid column type enum('Low','Medium','Important','Urgent') does not exist in DBO in [/home/leo/domains/supportic.us/cake/libs/model/cake_schema.php, line 606]
+2011-10-21 14:10:31 Notice: Notice (1024): Schema generation error: invalid column type enum('Unresolved','Resolved','Closed') does not exist in DBO in [/home/leo/domains/supportic.us/cake/libs/model/cake_schema.php, line 606]
