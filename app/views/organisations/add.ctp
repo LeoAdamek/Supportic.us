@@ -1,9 +1,9 @@
 <?php
 
-	$this->Form->create('Organisation', array('controller'=>'organisations','action'=>'add'));
-	$this->Form->input('name');
-	$this->Form->input('is_private');
-	$this->Form->input('country_id');
-	$this->Form->end('Create!');
+	echo $this->Form->create('Organisation', array('controller'=>'organisations','action'=>'add'));
+	echo $this->Form->input('name');
+	echo $this->Form->input('is_private');
+	echo $this->Form->input('country_id');
+	echo $this->Form->end('Create!');
 
 ?>
