@@ -9,9 +9,7 @@
 
 		<?=$this->Html->css('main.css')?>
 		<?=$this->Javascript->link('jQuery.min.js')?>
-		<?=$this->Javascript->link('jquery.tools.min.js')?>
-		<?=$this->Javascript->link('forms.js')?>
-
+		<?=$this->Javascript->link('vtip-min.js')?>
 		<?=$scripts_for_layout?>
 		
 	</head>

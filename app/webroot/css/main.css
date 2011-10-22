@@ -352,13 +352,10 @@ form .submit input[type=submit]:hover {
 	background-image: -moz-linear-gradient(bottom, #4a144e, #711f76);
 }
 
-.tooltip {
-	background-color: #000;
-	border: 1px solid #171717;
-	padding: 10px 15px;
-	width: auto;
-	display: none;
-	color: #FFF;
-	text-align: left;
-	font-size: 12pt;
-}
+
+/*
+ * Tool Tips
+ */
+
+p#vtip { display: none; position: absolute; padding: 10px; left: 5px; font-size: 0.8em; background-color: white; border: 1px solid #a6c9e2; -moz-border-radius: 5px; -webkit-border-radius: 5px; z-index: 9999 }
+p#vtip #vtipArrow { position: absolute; top: -10px; left: 5px }
