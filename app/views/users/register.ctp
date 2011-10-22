@@ -9,6 +9,11 @@
 	 */
 
 
+?>
+
+
+<?php
+
 	echo $this->Form->create('User', array('action' => 'register'));
 
 	echo $this->Form->input('name', array(

@@ -359,3 +359,15 @@ form .submit input[type=submit]:hover {
 
 p#vtip { display: none; position: absolute; padding: 10px; left: 5px; font-size: 0.8em; background-color: white; border: 1px solid #a6c9e2; -moz-border-radius: 5px; -webkit-border-radius: 5px; z-index: 9999 }
 p#vtip #vtipArrow { position: absolute; top: -10px; left: 5px }
+
+/*
+ * Errors
+ */
+div.error-message {
+	background-color: #FF2400;
+	padding: 10px 5px;
+	width: 100%;
+	color: white;
+	font-weight: bold;
+}
+	

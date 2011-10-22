@@ -22,6 +22,10 @@ class User extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+			'validCharacters' => array(
+				'rule' => '/^[A-Za-z\- ]+$/i',
+				'message' => 'This name can only contain letters (A-Z) Hyphens (-) and spaces'
+			),
 		),
 		'email' => array(
 			'email' => array(

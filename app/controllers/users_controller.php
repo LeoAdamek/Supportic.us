@@ -61,24 +61,23 @@ class UsersController extends AppController {
 					$this->_sendNewUserMail($this->User->read());
 					$this->Session->setFlash('Your account has been created '.$this->data['User']['name'].' Please check your email to activate your account');
 					$this->redirect('/');
+				}elseif(!$this->User->validates()){
+					$this->set('errors',$this->User->invalidFields());
 				}else{
-					$this->Session->setFlash("There was an error creating your account");
-					$this->redirect(array(
-						'controller' => 'users',
-						'action' => 'register'
-					));
+					$this->Session->setFlash("There was an error of some unexpected kind creating your account");
 				}
 			}else{
 				$this->Session->setFlash("The Entered Passwords did not match.");
 			}	
 		}else{
-			$this->data['User']['password'] = null;
-			$this->data['User']['password_confirm'] = null;
 			/*
 			 * The User did not submit data.
 			 * Display a form
 			 */
 		}
+		// Always make sure the user never has their password returned to them
+		$this->data['User']['password'] = null;
+		$this->data['User']['password_confirm'] = null;
 	}
 
 	function _sendNewUserMail($user){
