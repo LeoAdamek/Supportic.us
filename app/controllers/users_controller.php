@@ -19,6 +19,21 @@ class UsersController extends AppController {
 		$this->redirect($this->Auth->logout());
 	}
 
+	function view($id = NULL){
+		if(!$id){
+			$this->Session->setFlash('This user does not exist');
+			$this->redirect('/');
+		}else{
+			$user = $this->User->findById($id);
+			if(!$user){
+				$this->Session->setFlash('This user does not exist');
+				$this->redirect('/');
+			}else{
+				$this->set('user',$user);
+			}
+		}
+	}
+
 	function register(){
 		/*
 		 * Method to register a new account
