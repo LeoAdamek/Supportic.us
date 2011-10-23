@@ -101,7 +101,24 @@ class User extends AppModel {
 		if(!isset($this->id)){
 			return false;
 		}else{
-			return substr(Security::hash(Configure::read('Seurity.salt') . $this->field('signup_date') . date('Ymd')), 0, 8);
+			return substr(Security::hash(Configure::read('Security.salt') . $this->field('signup_date') . date('Ymd')), 0, 8);
+		}
+	}
+
+	public function generatePassword($len = 6){
+		$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890+-_=&*()@#';
+		$pass = '';
+		for($i = 0; $i < $len; $i++){
+			$pass .= $chars[mt_rand(0,strlen($chars))];
+		}
+		return $pass;
+	}
+
+	function generatePasswordResetHash(){
+		if(!isset($this->id)){
+			return false;
+		}else{
+			return substr(Security::hash(Configure::read('Security.salt') . $this->field('email') . date('Ymd')), 0, 12);
 		}
 	}
 }

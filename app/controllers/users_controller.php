@@ -34,6 +34,59 @@ class UsersController extends AppController {
 		}
 	}
 
+	function forgot_password($email = null, $checkStr = null){
+		if($email && $checkStr){
+			$user = $this->User->findByEmail($email);
+			$this->User->id = $user['User']['id'];
+				if($this->User->generatePasswordResetHash() == $checkStr){
+					// Correct URL was entered. Proceed with password reset
+					$new_password = $this->User->generatePassword(12);
+					$this->User->saveField('password', $this->Auth->password($new_password));
+					$this->_sendNewPassword($user, $new_password);
+					$this->Session->setFlash("Your Password was reset, Please check your e-mail for your new password");
+					$this->redirect(array('controller' => 'users','action' => 'login'));
+				}else{
+					$this->Session->setFlash("Invalid Password Reset Code");
+				}
+			}elseif(!empty($this->data)){
+				$user = $this->User->findByEmail($this->data['User']['email']);
+				if(!isset($user['User']['id'])){
+					$this->Session->setFlash("Invalid E-mail Address");
+				}else{
+					$this->User->id = $user['User']['id'];
+					$reset_code = $this->User->generatePasswordResetHash();
+					$this->_sendPasswordResetEmail($user, $reset_code);
+					$this->Session->setFlash('A password reset link has been sent to '.$user['User']['email']);
+			}
+
+		}
+	}
+
+	function _sendPasswordResetEmail($user = null, $reset_code = null){
+		if($user && $reset_code){
+			$this->Email->from = 'Supportic.us <no_reply@supportic.us>';
+			$this->Email->to = $user['User']['name'] . ' <'.$user['User']['email'].'>';
+			$this->Email->subject = 'Confirm your password reset';
+			$this->set('user',$user);
+			$this->set('reset_url', 'https://'.env('SERVER_NAME').'/users/forgot_password/'.$user['User']['email'].'/'.$reset_code);
+			$this->Email->sendAs = 'both';
+			$this->Email->template = 'resetpassword';
+			$this->Email->send();
+		}
+	}
+
+
+	function _sendNewPassword($user, $new_password){
+		$this->Email->form = 'Supportic.us <no_reply@supportic.us>';
+		$this->Email->to = $user['User']['name'] . ' <'.$user['User']['email'].'>';
+		$this->Email->subject = "Your new Suppportic.us Password";
+		$this->set('user',$user);
+		$this->set('password',$new_password);
+		$this->Email->sendAs = 'both';
+		$this->Email->template = 'newpassword';
+		$this->Email->send();
+	}
+
 	function register(){
 		/*
 		 * Method to register a new account
