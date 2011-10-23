@@ -9,7 +9,7 @@
 	 */
 
 	class AppController extends Controller {
-		var $components = array('Auth','Session');
+		var $components = array('Auth','Session','DebugKit.Toolbar');
 		var $helpers = array('Ajax','Javascript','Session');
 
 		function beforeFilter() {

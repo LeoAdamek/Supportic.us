@@ -45,7 +45,6 @@
 			<?=$content_for_layout?>
 		</div>
 
-		<?=$this->element('sql_dump')?>	
 
 	</body>
 </html>
