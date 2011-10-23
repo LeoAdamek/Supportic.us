@@ -24,7 +24,7 @@
 		'class' => 'vtip'
 	));
 	echo $this->Form->input('email',array(
-		'label' => 'You E-mail Address',
+		'label' => 'Your E-mail Address',
 		'title' => 'Your E-mail Address (Please enter a valid address)',
 		'class' => 'vtip'
 	));

@@ -13,7 +13,7 @@ body{
 
 	padding-top: 5px;
 
-	background-color: purple;
+	background-color: #6791BF;
 	
 	color: #FFF;
 	font-family: Helvetica,Arial,sans-serif;
@@ -26,19 +26,19 @@ h1, h2, h3 {
 
 h1 {
 	size: 2em;
-	color: purple;
+	color: #6791BF;
 	font-weight: bold;
 }
 
 h2 {
 	size: 1.5em;
-	color: purple;
+	color: #6791BF;
 	font-weight: bold;
 }
 
 h3 {
 	size: 1.25em;
-	color: purple;
+	color: #6791BF;
 	font-weight: bold;
 }
 
