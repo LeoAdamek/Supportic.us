@@ -42,8 +42,11 @@ class OrganisationsController extends AppController {
 
 	function getSubCategories($category_id = null){
 		if($category_id){
-			$this->view = 'Json';
-			$this->set('json', $this->Organisation->OrganisationCategory->getChildCategories($category_id));
+			$this->autoRender = false;
+			$categories = $this->Organisation->OrganisationCategory->getChildCategories($category_id);
+			header('Content-type: application/json');
+			Configure::writE('debug',0); // We can't have debug info in the json.
+			echo json_encode($categories);
 		}
 	}
 

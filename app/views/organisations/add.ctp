@@ -1,6 +1,6 @@
 <?php
 
-	echo $this->Javascript->link('Organisations_Categories_Filter.js');
+	echo $this->Html->script('Organisations_Categories_Filter');
 
 	echo $this->Form->create('Organisation', array('controller'=>'organisations','action'=>'add'));
 	echo $this->Form->input('name', array(
@@ -17,7 +17,8 @@
 	));
 	echo $this->Form->input('organisationCategory_id', array(
 		'title' => 'What does your organisation do?',
-		'class' => 'vtip'
+		'class' => 'vtip',
+		'id' => 'OCId'
 	));
 
 ?>

@@ -8,8 +8,8 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 
 		<?=$this->Html->css('main.css')?>
-		<?=$this->Javascript->link('jQuery.min.js')?>
-		<?=$this->Javascript->link('vtip-min.js')?>
+		<?=$this->Html->script('jQuery.min')?>
+		<?=$this->Html->script('vtip-min')?>
 		<?=$scripts_for_layout?>
 		
 	</head>
