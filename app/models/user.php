@@ -12,6 +12,10 @@ class User extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+			'illegalCharacters' => array(
+				'rule' => '/^\p{L}+$/u', // Validate string for all letters from all character sets in all languages of the world.
+				'message' => 'Your name contains disallowed characters',
+			),
 		),
 		'addressName' => array(
 			'notempty' => array(
