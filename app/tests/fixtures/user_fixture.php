@@ -15,13 +15,58 @@ class UserFixture extends CakeTestFixture {
 	);
 
 	var $records = array(
-		array(
+		array( // Example Record
 			'id' => 1,
 			'name' => 'Lorem ipsum dolor sit amet',
 			'addressName' => 'Lorem ipsum dolor sit amet',
 			'email' => 'Lorem ipsum dolor sit amet',
 			'password' => 'Lorem ipsum dolor sit amet',
 			'contry_id' => 1
+		),
+		array( // Should enter without issue
+			'id' => null,
+			'name' => 'Arnold McTavish',
+			'addressName' => 'Soap',
+			'email' => 'abxy@sharklasers.com',
+			'password' => 'Q-Foce Cadet.',
+			'country_id', => 185
+		),
+		array(
+			'id' => null,
+			'name' => 'J.S. Steinmann', // Should Fail (J.S.)
+			'addressName' => 'Joseph Steinmann',
+			'email' => 'x@example.com', // Should Fail (DNS)
+			'password' => 'abc', // Should Fail (length)
+			'country_id' => 192
+		),
+		array( // Should enter without issue
+			'id' => null,
+			'name' => 'Leo Adamek',
+			'addressName' => 'Leo',
+			'email' => 'leo@adamek.me',
+			'password' => 'teapot',
+			'country_id' => 217
+		),
+		array(
+			'id' => null,
+			'name' => 'I@n M@artin',
+			'addressName' => 'Ian',
+			'email' => 'Ian.Martin@altoncollege.ac.uk',
+			'country_id' => 56
+		),
+		array( // Should Fail at e-mail
+			'id' => null,
+			'name' => 'Björk Guðmundsdóttir',
+			'addressName' => 'Bjork',
+			'email' => 'foo@example.com', // Fail (DNS MX)
+			'country_id' => 137
+		),
+		array( // Fail at adressName and e-mail
+			'id' => null,
+			'name' => 'Amy-Rose',
+			'addressName' => 'Amy-R0e',
+			'email' => 'bar@b@az.com', // Fail (Format)
+			'country_id' => 199
 		),
 	);
 }
