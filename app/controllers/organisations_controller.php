@@ -22,6 +22,8 @@ class OrganisationsController extends AppController {
 
 		$organisation = $this->Organisation->findById($id);
 		$this->set('organisation', $organisation);
+		$this->set('countries',$this->Organisation->Country->find('list',array('fields' => 'Country.name')));
+		$this->set('organisationCategories', $this->Organisation->OrganisationCategory->find('list', array('fields' => 'OrganisationCategory.name')));
 		$user_id = $this->Auth->user('id');
 
 		$useer_isOwner = ($organisation['User']['id'] == $user_id);
@@ -33,7 +35,6 @@ class OrganisationsController extends AppController {
 			if(!empty($this->data) && $user_isOwner){
 				if($this->Organisation->save($this->data)){
 					$this->Session->setFlash("Changes Made Sucessfully");
-					$this->redirect(array('action' => 'index'));
 				}
 			}
 		}

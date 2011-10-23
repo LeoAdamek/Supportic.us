@@ -94,11 +94,7 @@ class UsersController extends AppController {
 		 */
 
 		$this->set('title_for_layout', "Register");
-
-			$countries = $this->User->Country->find('list', array(
-				'fields' => 'Country.name'
-			));
-			$this->set('countries', compact('countries'));
+			$this->set('countries', $this->User->Country->find('list', array('fields' => 'Country.name')));
 	
 
 		if(!empty($this->data)){
