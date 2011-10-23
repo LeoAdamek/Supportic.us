@@ -44,4 +44,7 @@ Router::connect('/register', array('controller' => 'users', 'action' => 'registe
 
 // Profile Pages
 Router::connect('/profile/*', array('controller' => 'users', 'action' => 'view'));
+
+// My Account
+Router::connect('/my_account', array('controller' => 'users', 'action' => 'edit'));
 ?>

@@ -6,7 +6,8 @@ class UsersController extends AppController {
 
 	function beforeFilter(){
 		parent::beforeFilter();
-		$this->Auth->allow('register','login','verify');
+		$this->Auth->allow('register','login','verify','forgot_password');
+		$this->Auth->deny('edit');
 	}
 
 	function login(){
@@ -92,6 +93,7 @@ class UsersController extends AppController {
 		 * Method to register a new account
 		 */
 
+		$this->set('title_for_layout', "Register");
 
 			$countries = $this->User->Country->find('list', array(
 				'fields' => 'Country.name'
@@ -160,5 +162,32 @@ class UsersController extends AppController {
 			$this->redirect(array('action' => 'login'));
 		}
 	}
+
+	function edit(){
+		$this->set('title_for_layout', "My Account");
+		$this->User->id = $this->Auth->user('id');
+		if(empty($this->data)){
+			$user = $this->User->read();
+			$user['User']['password'] = null;
+			$user['User']['isActivated'] = null;
+			$this->data['User']['password_confirm'] = null;
+			$this->data = $user;
+		}else{
+			if(($this->data['User']['password'] != null) && ($this->data['User']['password'] != $this->Auth->password($this->data['User']['password_confirm']))){
+				$this->Session->setFlash("The Entered Passwords do not match");
+				$this->data['User']['password'] = null;
+			}else{
+				if($this->User->save($this->data)){
+					$this->Session->setFlash("Your Information was updated successfully.");
+					$this->data['User']['password'] = null;
+				}elseif(!$this->User->validates()){
+					$this->Session->setFlash("There were errors updating your account");
+					$this->set('errors',$this->User->invalidFields());
+				}
+			}
+		}
+		$this->data['User']['password'] = '';
+		$this->data['User']['password_confirm'] = '';
+	}	
 
 }

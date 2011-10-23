@@ -24,7 +24,7 @@
 				<h3>Navigation</h3>
 				<div id="userpane">
 					<?php if($session->check('Auth.User.id')): ?>
-					<p style="color: white;">Logged In As: <?=$session->read('Auth.User.addressName')?> | <?=$this->Html->link('Log Out', array(
+					<p style="color: white;">Logged In As: <?=$this->Html->link($session->read('Auth.User.addressName'), array('controller' => 'users', 'action' => 'edit'))?> | <?=$this->Html->link('Log Out', array(
 						'controller' => 'users',
 						'action' => 'logout'
 					))?>
