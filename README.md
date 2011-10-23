@@ -36,13 +36,13 @@ Credits to Third-Party Libraries
 --------------------------------
 The following third party libraries were used in *Supportic.us*
 
-* [vtip][http://www.vertigo-project.com/projects/vtip] (Tooltips)
+* [vtip](http://www.vertigo-project.com/projects/vtip) (Tooltips)
 * [CakePHP][CakePHP] (MVC Framework)
-* [SimpleTest][http://simpletest.org] (Testing Engine)
-* [CakePHP Debug Kit][https://github.com/cakephp/debug_kit] (Debug Kit/Toolbar)
-* [jQuery][http://jquery.com] (Javascript Framework)
-* [FamFamFam Silk Icons][http://famfamfam.com/lab/icons/silk/] (Icon Set)
-* [FamFamFam Flag Icons][http://famfamfam.com/lab/icons/flags/] (Flag Icon Set)
+* [SimpleTest](http://simpletest.org) (Testing Engine)
+* [CakePHP Debug Kit](https://github.com/cakephp/debug_kit) (Debug Kit/Toolbar)
+* [jQuery](http://jquery.com) (Javascript Framework)
+* [FamFamFam Silk Icons](http://famfamfam.com/lab/icons/silk/) (Icon Set)
+* [FamFamFam Flag Icons](http://famfamfam.com/lab/icons/flags/) (Flag Icon Set)
 
 
 [CakePHP]: http://cakephp.org/ "Cake PHP"
