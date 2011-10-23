@@ -40,4 +40,21 @@ class OrganisationCategory extends AppModel {
 		)
 	);
 
+	function getRootCategories(){
+		return $this->find('list', array(
+			'fields' => 'OrganisationCategory.name',
+			'conditions' => array(
+				'OrganisationCategory_parent_id' => null
+			)
+		));
+	}
+
+	function getChildCategories($category_id){
+		return $this->find('list', array(
+			'fields' => 'OrganisationCategory.name',
+			'conditions' => array(
+				'OrganisationCategory_parent_id' => $category_id
+			)
+		));
+	}
 }

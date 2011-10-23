@@ -1,5 +1,6 @@
 <?php
 
+	echo $this->Javascript->link('Organisations_Categories_Filter.js');
 
 	echo $this->Form->create('Organisation', array('controller'=>'organisations','action'=>'add'));
 	echo $this->Form->input('name', array(
@@ -18,6 +19,13 @@
 		'title' => 'What does your organisation do?',
 		'class' => 'vtip'
 	));
+
+?>
+
+	<div id="OrganisationSelectTree"></div>
+
+<?php
+
 	echo $this->Form->end('Create!');
 
 ?>

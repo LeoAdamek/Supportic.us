@@ -315,6 +315,10 @@ input[type=checkbox] {
 	width: auto;
 }
 
+input:focus {
+	box-shadow: 0 0 5px 5px #8babce;
+}
+
 div.checkbox label {
 	display: inline;
 }
@@ -347,6 +351,9 @@ form .submit input[type=submit] {
 	background-image: -moz-linear-gradient(bottom, #57185b, #8a2691);
 	color: white;
 	text-shadow: #170618 0px 1px 0px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 }
 
 form .submit input[type=submit]:hover {

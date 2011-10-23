@@ -113,19 +113,6 @@ class Organisation extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'Permission' => array(
-			'className' => 'Permission',
-			'foreignKey' => 'organisation_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
 		'Ticket' => array(
 			'className' => 'Ticket',
 			'foreignKey' => 'organisation_id',

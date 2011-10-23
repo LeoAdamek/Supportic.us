@@ -2,8 +2,6 @@
 class OrganisationsController extends AppController {
 
 	var $name = 'Organisations';
-	var $helpers = array('Html','Form');
-	var $components = array('Auth','Session');
 
 	function beforeFilter(){
 		parent::beforeFilter();
@@ -23,7 +21,7 @@ class OrganisationsController extends AppController {
 		$organisation = $this->Organisation->findById($id);
 		$this->set('organisation', $organisation);
 		$this->set('countries',$this->Organisation->Country->find('list',array('fields' => 'Country.name')));
-		$this->set('organisationCategories', $this->Organisation->OrganisationCategory->find('list', array('fields' => 'OrganisationCategory.name')));
+		$this->set('organisationCategories', $this->Organisation->OrganisationCategory->getRootCategories());
 		$user_id = $this->Auth->user('id');
 
 		$useer_isOwner = ($organisation['User']['id'] == $user_id);
@@ -38,16 +36,23 @@ class OrganisationsController extends AppController {
 				}
 			}
 		}
+
+		$this->data = $organisation;
 	}
 
-
+	function getSubCategories($category_id = null){
+		if($category_id){
+			$this->view = 'Json';
+			$this->set('json', $this->Organisation->OrganisationCategory->getChildCategories($category_id));
+		}
+	}
 
 	function add(){
 		/*
 		 * Controller Method for creating a new organisation
 		 */
 		$this->set('countries',$this->Organisation->Country->find('list',array('fields' => 'Country.name')));
-		$this->set('organisationCategories', $this->Organisation->OrganisationCategory->find('list', array('fields' => 'OrganisationCategory.name')));
+		$this->set('organisationCategories', $this->Organisation->OrganisationCategory->getRootCategories());
 
 
 		if(!empty($this->data)){
