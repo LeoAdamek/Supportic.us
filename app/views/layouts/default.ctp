@@ -15,6 +15,7 @@
 	</head>
 
 	<body>
+	
 
 		<div id="header">
 				<h1>Supportic.us</h1>
@@ -36,7 +37,7 @@
 					<?php endif; ?>
 				</div>
 		</div>
-
+	
 		<div id="content_wrapper">
 
 			<?=$this->Session->flash()?>
@@ -44,7 +45,5 @@
 
 			<?=$content_for_layout?>
 		</div>
-
-
 	</body>
 </html>
