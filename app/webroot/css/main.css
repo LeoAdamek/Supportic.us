@@ -107,6 +107,8 @@ div#navigation {
 	width: 100%;
 	float: left;
 	clear: both;
+	height: 48px;
+	vertical-align: bottom;
 }
 
 div#userpane {
@@ -402,4 +404,47 @@ div.error-message {
 	color: white;
 	font-weight: bold;
 }
-	
+
+/*
+ * Top Navigation Styles
+ */
+
+div#navigation ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	height: auto;
+	vertical-align: middle;
+}
+
+div#navigation  li {
+	display: inline;
+	float: left;
+	border: none;
+	border-width: 1px 1px 0px 1px;
+	margin: 0 0.5em 0 0;
+	height: 48px;
+	vertical-align: middle;
+}
+
+div#navigation li a {
+	vertical-align: middle;
+	padding: 0 1em;
+	color: #FFF;
+	text-decoration: none;
+	height: 46px;
+}
+
+div#navigation ul li a:visited {
+	color: #FFF;
+	text-decoration: none;
+}
+
+div#navigation ul li a:hover {
+	color: #FFF;
+	text-decoration: none;
+}
+
+div#navigation ul li:hover {
+	background-color: orange;
+}

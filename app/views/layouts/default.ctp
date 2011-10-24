@@ -22,7 +22,16 @@
 		</div>
 
 		<div id="navigation">
-				<h3>Navigation</h3>
+
+				<?php // The Global Navigation ?>
+				<ul>
+					<li><?=$this->Html->link('Home','/')?></li>
+					<li><?=$this->Html->link('Organisations', array('controller' => 'Organisations', 'action' => 'index'))?></li>
+				</ul>
+
+				<?php // End Global Navigation ?>
+
+
 				<div id="userpane">
 					<?php if($session->check('Auth.User.id')): ?>
 					<p style="color: white;">Logged In As: <?=$this->Html->link($session->read('Auth.User.addressName'), array('controller' => 'users', 'action' => 'edit'))?> | <?=$this->Html->link('Log Out', array(
