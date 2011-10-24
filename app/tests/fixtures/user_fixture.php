@@ -29,7 +29,7 @@ class UserFixture extends CakeTestFixture {
 			'addressName' => 'Soap',
 			'email' => 'abxy@sharklasers.com',
 			'password' => 'Q-Foce Cadet.',
-			'country_id', => 185
+			'country_id' => 185
 		),
 		array(
 			'id' => null,
