@@ -26,21 +26,27 @@ h1, h2, h3 {
 }
 
 h1 {
-	size: 2em;
+	font-size: 36pt;
 	color: #6791BF;
 	font-weight: bold;
 }
 
 h2 {
-	size: 1.5em;
+	font-size: 24pt;
 	color: #6791BF;
 	font-weight: bold;
 }
 
 h3 {
-	size: 1.25em;
+	font-size: 18pt;
 	color: #6791BF;
 	font-weight: bold;
+}
+
+h4 {
+	font-size: 10pt;
+	color: #111;
+	border-bottom: 1px solid #CCC;
 }
 
 p {
@@ -74,8 +80,9 @@ div#header {
 
 div#header h1 {
 	color: #fff;
-	font-size: 36pt;
+	font-size: 48pt;
 	text-shadow: rgba(0,0,0,0.6) 0px -1px 0px;
+	letter-spacing: -5.5pt;
 }
 
 div#navigation {
