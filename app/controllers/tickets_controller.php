@@ -7,7 +7,7 @@ class TicketsController extends AppController {
 
 	function beforeFilter(){
 		parent::beforeFilter();
-		$this->Auth->deny('*');
+		$this->Auth->deny('add','view');
 	}
 
 	function getSubCategories($parent_id = null){

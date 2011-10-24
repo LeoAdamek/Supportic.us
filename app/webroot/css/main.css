@@ -215,10 +215,20 @@ table tr td {
 	border-bottom: 1px solid #EEE;
 }
 
+table tr td a {
+	color: #171717;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+table tr td a:visited {
+	color: #171717;
+}
+
 /* Fancy selector for alternating row colours. */
 table tr:nth-child(2n) td {
-	background: #6791BF;
-	color: white;
+	background: #dfe7f1;
+	
 }
 
 
