@@ -18,7 +18,7 @@
 	
 
 		<div id="header">
-				<h1>Supportic.us</h1>
+			<h1><?=$this->Html->link('Supportic.us', '/')?></h1>
 		</div>
 
 		<div id="navigation">

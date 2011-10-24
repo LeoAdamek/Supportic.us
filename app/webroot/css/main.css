@@ -85,6 +85,21 @@ div#header h1 {
 	letter-spacing: -5.5pt;
 }
 
+div#header h1 a {
+	color: #fff;
+	text-decoration: none;
+}
+
+div#header h1 a:visited {
+	color: #fff;
+	text-decoration: none;
+}
+
+div#header h1 a:hover {
+	color: #d3dfec;
+	text-decoration: none;
+}
+
 div#navigation {
 	background-color: #6791BF;
 	background-image: -moz-linear-gradient(bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.7));

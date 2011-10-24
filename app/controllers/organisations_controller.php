@@ -48,7 +48,7 @@ class OrganisationsController extends AppController {
 			$categories = $this->Organisation->OrganisationCategory->getRootCategories();
 		}
 		header('Content-type: application/json');
-		Configure::writE('debug',0); // We can't have debug info in the json.
+		Configure::write('debug',0); // We can't have debug info in the json.
 		echo json_encode($categories);
 	}
 
@@ -65,13 +65,9 @@ class OrganisationsController extends AppController {
 			$this->Organisation->set('user_id',$this->Auth->user('id'));
 			if($this->Organisation->save($this->data)){
 				$this->Session->setFlash("Organisation created sucessfully");
-				$this->redirect('/');
+				$this->redirect(array('controller' => 'organisations', 'action' => 'index'));
 			}else{
 				$this->Session->setFlash("There was an error creating the organisation");
-				$this->redirect(array(
-					'controller' => 'Organisations',
-					'action' => 'add'
-				));
 			}
 		}
 	}
