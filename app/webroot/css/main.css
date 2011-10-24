@@ -187,6 +187,10 @@ th a {
 	text-decoration: none;
 }
 
+th a:visited {
+	color: #171717;
+}
+
 th a:hover {
 	text-decoration: underline;
 }
