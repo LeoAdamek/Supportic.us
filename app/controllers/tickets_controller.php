@@ -62,6 +62,57 @@ class TicketsController extends AppController {
 		}
 	}
 
+	function reply($ticket_id){
+		$this->Ticket->id = $ticket_id;
+
+		if($this->Ticket->exists()){
+			// The Ticket is Valid
+			$ticket = $this->Ticket->read();
+			if($ticket['User']['id'] != $this->Auth->user('id') && $ticket['Organisation']['User']['id'] != $this->Auth->user('id')){ // This line will be changed
+
+				if(!empty($this->data)){
+					$this->Ticket->Message->create(); // Create a new message
+					$this->Ticket->Message->set('postdate', date('Y-m-d H:i:s'));
+					$this->Ticket->Message->set('user_id', $this->Auth->user('id'));
+					$this->Ticket->Message->set('ticket_id', $ticket_id);
+					$this->Ticket->Message->set('body', $this->data['Message']['body']);
+					if($this->Ticket->Message->validates() && $this->Ticket->Message->save()){
+						$this->Session->setFlash("Your Reply Was Posted!");
+						$this->redirect(array(
+							'controller' => 'tickets',
+							'action' => 'view',
+							$ticket['Ticket']['id'],
+							$ticket['Ticket']['slug']
+						));
+					}	
+				}
+			}
+			$this->set('ticket',$ticket);
+		}
+	}
+			
+
+	function view($ticket_id){
+		$this->Ticket->id = $ticket_id;
+		if($this->Ticket->exists()){
+			// The Ticket is real
+			$ticket = $this->Ticket->read();
+			if($ticket['User']['id'] != $this->Auth->user('id') && $ticket['Organisation']['User']['id'] != $this->Auth->user('id')){ // This line will be changed.
+				$this->Session->setFlash("This is not your ticket.");
+			}else{
+				// It's their ticket, show them the stuff.
+				$this->set('ticket',$ticket);
+				$this->set('messages', $this->Ticket->Message->find('all', array(
+					'conditions' => array(
+						'Message.ticket_id' => $ticket_id
+					)
+				)));
+			}
+		}else{
+			$this->Session->setFlash("Invalid Ticket.");
+		}
+	}
+
 
 }
 

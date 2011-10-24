@@ -6,7 +6,7 @@
 	echo $this->Html->script('ticket_categories_filter');
 
 	echo $this->Form->create('Ticket', array('controller' => 'Tickets','action' => 'add/'.$info['Organisation']['id'].'/'.$info['Organisation']['slug']));
-	echo $this->Form->input('Title', array(
+	echo $this->Form->input('title', array(
 		'label' => "What's the Problem?",
 		'title' => 'A short Summary of the problem',
 		'class' => 'vtip'
