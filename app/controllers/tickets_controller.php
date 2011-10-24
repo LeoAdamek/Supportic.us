@@ -5,6 +5,11 @@ class TicketsController extends AppController {
 	var $name = 'Tickets';
 	var $helpers = array('Time');
 
+	function beforeFilter(){
+		parent::beforeFilter();
+		$this->Auth->deny('*');
+	}
+
 	function getSubCategories($parent_id = null){
 		$this->autoRender = false;
 		if($parent_id){
@@ -69,6 +74,7 @@ class TicketsController extends AppController {
 			$ticket = $this->Ticket->read();
 			if($ticket['User']['id'] != $this->Auth->user('id') && $ticket['Organisation']['User']['id'] != $this->Auth->user('id')){ // This line will be changed.
 				$this->Session->setFlash("This is not your ticket.");
+				$this->redirect(array('controller'=>'organisations','action'=>'index'));
 			}else{
 				// It's their ticket, show them the stuff.
 				$this->set('ticket',$ticket);

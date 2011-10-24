@@ -14,7 +14,7 @@
 		<?php foreach($messages as $message): ?>
 
 			<div class="message">
-			<h4><?=$message['User']['name']?> (<?=$message['User']['addressName']?>) Said:</h4>
+			<h4><?=$message['User']['name']?> (<?=$message['User']['addressName']?>) Said [<?=$this->Time->timeAgoInWords($message['Message']['postdate'])?>]</h4>
 					<p><?=$message['Message']['body']?></p>
 			</div>
 

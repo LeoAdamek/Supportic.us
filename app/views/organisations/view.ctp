@@ -7,3 +7,4 @@
 		Category: <?=$org['OrganisationCategory']['name']?>
 	</p>
 
+	<h3><?php echo $this->Html->link('Submit A Ticket', array('controller' => 'tickets', 'action' => 'add', $org['Organisation']['id'])); ?></h3>
