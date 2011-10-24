@@ -2,6 +2,9 @@
 class Organisation extends AppModel {
 	var $name = 'Organisation';
 	var $displayField = 'name';
+
+	var $actsAs = array('Sluggable');
+
 	var $validate = array(
 		'country_id' => array(
 			'numeric' => array(
@@ -127,5 +130,13 @@ class Organisation extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+
+	function getSlug(){
+		if(isset($this->id)){
+			return low(Inflector::slug($this->field('name')));
+		}else{
+			return false;
+		}
+	}
 
 }

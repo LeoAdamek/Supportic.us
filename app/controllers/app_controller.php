@@ -33,7 +33,4 @@
 			$this->Auth->userScope = array('User.isActivated' => true); // Users must have an activated account before they can log in.
 		}
 	}
-
-
-
 ?>

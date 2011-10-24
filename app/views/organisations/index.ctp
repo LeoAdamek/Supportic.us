@@ -11,7 +11,7 @@
 			<td>
 				<?=$org['Organisation']['name']?>
 				<?php if($org['User']['id'] == $session->read('Auth.User.id')){
-					echo $this->Html->link('Edit' , array('controller' => 'organisations', 'action' => 'edit', $org['Organisation']['id'] ));
+					echo $this->Html->link('Edit' , array('controller' => 'organisations', 'action' => 'edit', $org['Organisation']['id'], $org['Organisation']['slug'] ));
 				} ?>
 			
 			</td>
