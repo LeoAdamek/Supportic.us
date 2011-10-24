@@ -23,6 +23,14 @@ class OrganisationsController extends AppController {
 		$this->set('organisations', $this->paginate());
 	}
 
+	function view($org_id = NULL){
+		$org = $this->Organisation->findById($org_id);
+
+		if(!empty($org)){
+			$this->set('org',$org);
+		}
+	}
+
 	function edit($id = NULL){
 
 		$organisation = $this->Organisation->findById($id);

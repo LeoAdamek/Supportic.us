@@ -131,12 +131,4 @@ class Organisation extends AppModel {
 		)
 	);
 
-	function getSlug(){
-		if(isset($this->id)){
-			return low(Inflector::slug($this->field('name')));
-		}else{
-			return false;
-		}
-	}
-
 }

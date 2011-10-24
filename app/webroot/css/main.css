@@ -221,6 +221,13 @@ table tr:nth-child(2n) td {
 	color: white;
 }
 
+
+table a.edit_action {
+	float: right;
+	color: #171717;
+}
+
+
 /*
  * [[ End Table Styling ]]
  */

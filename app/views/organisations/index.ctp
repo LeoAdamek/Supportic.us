@@ -9,9 +9,15 @@
 	<?php foreach($organisations as $org): ?>
 		<tr>
 			<td>
-				<?=$org['Organisation']['name']?>
+<?=$this->Html->link($org['Organisation']['name'], array(
+	'controller' => 'organisations',
+	'action' => 'view',
+	$org['Organisation']['id'],
+	$org['Organisation']['slug']
+))?>
+
 				<?php if($org['User']['id'] == $session->read('Auth.User.id')){
-					echo $this->Html->link('Edit' , array('controller' => 'organisations', 'action' => 'edit', $org['Organisation']['id'], $org['Organisation']['slug'] ));
+					echo $this->Html->link('Edit' , array('controller' => 'organisations', 'action' => 'edit', $org['Organisation']['id'], $org['Organisation']['slug'] ), array('class' => 'edit_action'));
 				} ?>
 			
 			</td>
