@@ -18,51 +18,103 @@ class UserTestCase extends CakeTestCase {
 	 * Validation Unit Tests
 	 */
 
-	function testValidationAllowsNormalData(){
-		$this->assertTrue($this->User->validates(array(
-			'User' => array(
+	function testValidation(){
+		$baseTestData = array(
 				'name' => 'Leo Adamek',
 				'addressName' => 'Leo',
 				'email' => 'leo@adamek.me',
 				'password' => 'teapot',
 				'signup_date' => date('Y-m-d H:i:s'),
-				'country_id' => 200,
-				'isActivated' => false
-				)
-			)	
-		));
-
-		$this->assertTrue($this->User->validates(array(
-			'User' => array(
-				'name' => 'Ian Martin',
-				'addressName' => 'Ian',
-				'email' => 'Ian.Martin@altoncollege.ac.uk',
-				'password' => 'cupcake',
-				'signup_date' => '2011-10-24 13:33:37',
 				'country_id' => 199,
-				'isActivated' => false
-			))
-		));
+				'isActivated' => 0
+			);
+
+		$additionalTestCases = array(
+			array(	// Valid Data
+				array(),	// Base Test Case
+				array('name' => 'Ian Martin'),
+				array('name' => 'Amy-Rose'),
+				array('name' =>	'Iån Mátîn'), // Fails (Possible Encoding Issue)
+				array('name' => 'Björk Guğmundsdóttir'), // Fails (Possible Encodign Issue)
+				array('name' => 'Michael Bernard-Anthony'),
+				array('name' => 'Abu Karim Muhammad al-Jamil ibn Nidal ibn Abdulaziz al-Filistini'),
+
+				array('addressName' => 'Ian Martin'),
+				array('addressName' => 'Ian'),
+				array('addressName' => 'Mao Ze Dong'),
+				array('addressName' => 'Bjork'),
+				array('addressName' => 'Boris'),
+				array('addressName' => 'Amy'),
+				array('addressName' => 'Amy-Rose'),
+				array('addressName' => 'Perez Quinones'),
+				array('addressName' => 'Joe Bloggs'),
+				array('addressName' => 'Joe M Bloggs'),
+
+				array('password' => 'cupcake'),
+				array('password' => 'teacake'),
+				array('password' => 'gumdrop'),
+				array('password' => '123456'),
+				array('password' => $this->User->generatePassword(6)),
+				array('password' => $this->User->generatePassword(12)),
+			),
+			array( // Invalid Data
+				array('name' => 'Ian Martin!'), // (!) is now allowed
+				array('name' => 'I@n M@rtin'), // (@) is not allowed
+				array('name' => 'Ian_Martin'), // (_) is not allowed
+
+				array('addressName' => 'Amy_Rose'), // (_) is not allowed
+				array('addressName' => 'Amy-R0se'), // (0) is not allowed
+				array('addressName' => 'Pérez Quiñones'), // (é,ñ) are not allowed
+				array('addressName' => 'Joe M. Bloggs'), // (.) is not allowed
+
+				array('password' => '123'), // too short
+				array('password' => 'abcde'), // too short
+				array('password' => 'a'), // too short
+				array('password' => 'jeans'),  // too short
+				array('password' => $this->User->generatePassword(5)), // too short
+
+				array('email' => 'foo@bar'), // invalid format
+				array('email' => 'b@ar@baz.com'), // invalid format
+				
+
+			)
+		);
+
+		$Ucases = $this->__generateCasesOnGivenConditions($baseTestData, $additionalTestCases, 1);
+		foreach($Ucases as $expected => $cases){
+			foreach($cases as $case){
+				$result = $this->User->save($case);
+
+				echo "<hr />";
+				
+				var_dump($result == $expected, $case);
+
+				if($expected){
+				 	$this->assertTrue($result);
+				}else{
+					$this->assertFalse($result);
+				}
+			}
+		}
 	}
 
-	function testGeneratedPasswordsValidate(){
-		$this->assertTrue($this->User->validates(array(
-			'User' => array(
-				'password' => $this->User->generatePassword(12) // Generated Password of 12 characters (should accept)
-			))
-		));
-	}
+	function __generateCasesOnGivenConditions($baseCase, $testCases, $offset){
+		$return = array();
+		$trueConditions = $testCases[0];
+		$falseConditions = $testCases[1];
 
-	function testDisallowShortPasswords(){
-		$this->assertFalse($this->User->validates(array(
-			'User' => array(
-				'password' => '123'
-			))
-		));
-	}
+		foreach($trueConditions as $index => $param){
+			mt_srand();
+			$param['email'] = 'example_' . $index + mt_rand(2^32, 2^64) . '@example.com';
+			$return[true][] = array_merge($baseCase, $param);
+		}
 
-	function testValidationHash(){
-		//
-	}
+		foreach($falseConditions as $index => $param){
+			mt_srand();
+			$param['email'] = 'example_' . $index + count($trueConditions) + mt_rand(2^32, 2^64) . '@example.com';
+			$return[false][] = array_merge($baseCase, $param);
+		}
 
+		return $return;
+	}
 }

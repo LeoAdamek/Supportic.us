@@ -65,8 +65,8 @@ class User extends AppModel {
 			'minlength' => array(
 				'rule' => array('minlength',6),
 				'message' => 'Passwords must be at least 6 characters in length.',
-				//'allowEmpty' => false,
-				//'required' => false,
+				'allowEmpty' => false,
+				'required' => true,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
