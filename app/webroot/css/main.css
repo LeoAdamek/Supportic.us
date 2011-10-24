@@ -154,10 +154,10 @@ div#flashMessage {
 
 div#authMessage {
 	background-color: #FFBB00;
+	color: white;
 	padding:5px;
 	width: 100%;
 	font-size: 120%;
-	font-family: Monaco,Consolas,"Courier New",monospaced;
 
 }
 
@@ -217,7 +217,8 @@ table tr td {
 
 /* Fancy selector for alternating row colours. */
 table tr:nth-child(2n) td {
-	background: #BBB;
+	background: #6791BF;
+	color: white;
 }
 
 /*
