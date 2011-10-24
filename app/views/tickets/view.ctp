@@ -23,7 +23,7 @@
 	</div>
 
 	<?=$this->Html->link('Reply To This Ticket', array(
-		'controller' => 'tickets',
+		'controller' => 'messages',
 		'action' => 'reply',
 		$ticket['Ticket']['id'],
 		$ticket['Ticket']['slug']
