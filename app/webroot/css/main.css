@@ -473,3 +473,20 @@ div#navigation ul li a:hover {
 div#navigation ul li:hover {
 	background-color: orange;
 }
+
+a.action {
+	background-color: #6791BF;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	padding: 4px 4px;
+	text-decoration: none;
+	margin-top: 24pt;
+	margin-left: 1em;
+	margin-right: 1em;
+	margin-bottom: 24pt;
+
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}

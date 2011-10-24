@@ -35,4 +35,4 @@
 		Page: <?=$this->Paginator->counter()?>
 	</div>
 
-	<?=$this->Html->link('Create a new Organisation', array('action' => 'add'))?>
+	<?=$this->Html->link('Create a new Organisation', array('action' => 'add'), array('class' => 'action'))?>
