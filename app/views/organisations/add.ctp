@@ -16,6 +16,13 @@
 		'title' => 'The primary operating country of your organisation',
 		'class' => 'vtip'
 	));
+
+?>
+
+	<label for="data[Organisation][OrganisationCategory_id]" class="required vtip" title="Help people find you by category">What does your organisation do?</label>
+
+<?php
+
 	echo $this->Form->input('organisationCategory_id', array(
 		'title' => 'What does your organisation do?',
 		'class' => 'vtip',

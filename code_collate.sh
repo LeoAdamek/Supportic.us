@@ -2,8 +2,8 @@
 
 for filename in $(find . -type f)
 do
-	f_type=$(file -b $filename)
-	if [ "${f_type##* }" == "text" ]
+	f_type=$(file -ib $filename)
+	if [ "${f_type%/*}" == "text" ]
 	then
 		echo "###################### FILE: ${filename} #######################" >> collated_code.txt
 		cat ${filename} >> collated_code.txt
