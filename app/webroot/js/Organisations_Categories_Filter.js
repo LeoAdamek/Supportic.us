@@ -5,9 +5,7 @@ $(function(){
 		indexed: true,
 		on_each_change: 'getSubCategories',
 		lazy_load: 'getSubCategories',
-		choose: function(level){
-			return 'Choose Category Level '+level;
-		},
+		choose: 'Choose A Category...'
 		
 	};
 

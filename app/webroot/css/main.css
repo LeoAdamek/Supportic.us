@@ -110,6 +110,8 @@ div#navigation {
 	clear: both;
 	height: 48px;
 	vertical-align: bottom;
+
+	text-shadow: rgba(255,255,255,0.3) 0px -1px 0px;
 }
 
 div#userpane {
