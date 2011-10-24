@@ -105,13 +105,13 @@ class UserTestCase extends CakeTestCase {
 
 		foreach($trueConditions as $index => $param){
 			mt_srand();
-			$param['email'] = 'example_' . $index + mt_rand(2^32, 2^64) . '@example.com';
+			$param['email'] = 'example_' . $index + mt_rand(pow(2,32), pow(2,64)) . '@example.com';
 			$return[true][] = array_merge($baseCase, $param);
 		}
 
 		foreach($falseConditions as $index => $param){
 			mt_srand();
-			$param['email'] = 'example_' . $index + count($trueConditions) + mt_rand(2^32, 2^64) . '@example.com';
+			$param['email'] = 'example_' . $index + count($trueConditions) + mt_rand(pow(2,32), pow(2,64)) . '@example.com';
 			$return[false][] = array_merge($baseCase, $param);
 		}
 
