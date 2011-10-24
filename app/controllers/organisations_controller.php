@@ -40,14 +40,16 @@ class OrganisationsController extends AppController {
 		$this->data = $organisation;
 	}
 
-	function getSubCategories($category_id = null){
-		if($category_id){
-			$this->autoRender = false;
-			$categories = $this->Organisation->OrganisationCategory->getChildCategories($category_id);
-			header('Content-type: application/json');
-			Configure::writE('debug',0); // We can't have debug info in the json.
-			echo json_encode($categories);
+	function getSubCategories($parent_id = null){
+		$this->autoRender = false;
+		if($parent_id){
+			$categories = $this->Organisation->OrganisationCategory->getChildCategories($parent_id);
+		}else{
+			$categories = $this->Organisation->OrganisationCategory->getRootCategories();
 		}
+		header('Content-type: application/json');
+		Configure::writE('debug',0); // We can't have debug info in the json.
+		echo json_encode($categories);
 	}
 
 	function add(){

@@ -43,6 +43,7 @@ The following third party libraries were used in *Supportic.us*
 * [jQuery](http://jquery.com) (Javascript Framework)
 * [FamFamFam Silk Icons](http://famfamfam.com/lab/icons/silk/) (Icon Set)
 * [FamFamFam Flag Icons](http://famfamfam.com/lab/icons/flags/) (Flag Icon Set)
+* [jQuery Option Tree](http://code.google.com/p/jquery-option-tree/) (Selection Trees)
 
 
 [CakePHP]: http://cakephp.org/ "Cake PHP"

@@ -1,5 +1,6 @@
 <?php
 
+	echo $this->Html->script('jquery.optionTree');
 	echo $this->Html->script('Organisations_Categories_Filter');
 
 	echo $this->Form->create('Organisation', array('controller'=>'organisations','action'=>'add'));
@@ -18,7 +19,8 @@
 	echo $this->Form->input('organisationCategory_id', array(
 		'title' => 'What does your organisation do?',
 		'class' => 'vtip',
-		'id' => 'OCId'
+		'id' => 'OCId',
+		'type' => 'hidden'
 	));
 
 ?>

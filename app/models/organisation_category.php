@@ -51,7 +51,7 @@ class OrganisationCategory extends AppModel {
 
 	function getChildCategories($category_id){
 		return $this->find('list', array(
-			'fields' => 'OrganisationCategory.name', 'OrganisationCategory.id',
+			'fields' => 'OrganisationCategory.name',
 			'conditions' => array(
 				'OrganisationCategory.parent' => $category_id
 			)
