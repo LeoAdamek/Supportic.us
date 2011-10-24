@@ -3,6 +3,13 @@ class OrganisationsController extends AppController {
 
 	var $name = 'Organisations';
 
+	var $paginate = array(
+		'limit' => 25,
+		'order' => array(
+			'Organisation.name' => 'asc'
+		)
+	);
+
 	function beforeFilter(){
 		parent::beforeFilter();
 		$this->Auth->deny('add','edit','delete','manage');

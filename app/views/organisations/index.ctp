@@ -1,9 +1,9 @@
 
 <table>
 	<tr>
-		<th><?php echo $this->Paginator->sort('name');?></th>
-		<th><?php echo $this->Paginator->sort('category');?></th>
-		<th><?php echo $this->Paginator->sort('country');?></th>
+		<th><?php echo $this->Paginator->sort('Name','Organisation.name');?></th>
+		<th><?php echo $this->Paginator->sort('Category','OrganisationCategory.name');?></th>
+		<th><?php echo $this->Paginator->sort('Country','Country.name');?></th>
 	</tr>
 
 	<?php foreach($organisations as $org): ?>
