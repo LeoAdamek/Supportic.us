@@ -85,9 +85,9 @@ class UserTestCase extends CakeTestCase {
 			foreach($cases as $case){
 				$result = $this->User->save($case);
 
-				echo "<hr />";
-				
-				var_dump($result == $expected, $case);
+				if($expected != $result){
+					debug($case);
+				}
 
 				if($expected){
 				 	$this->assertTrue($result);
