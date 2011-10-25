@@ -8,3 +8,15 @@
 	</p>
 
 	<h3><?php echo $this->Html->link('Submit A Ticket', array('controller' => 'tickets', 'action' => 'add', $org['Organisation']['id'])); ?></h3>
+
+	<?php if($isOwner): ?>
+
+		<?=$this->Html->link('Edit This Organisation', array(
+			'controller' => 'organisations',
+			'action' => 'edit',
+			$org['Organisation']['id']
+		),array(
+			'class' => 'action'
+		))?>
+
+	<?php endif; ?>

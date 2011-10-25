@@ -28,6 +28,7 @@ class OrganisationsController extends AppController {
 
 		if(!empty($org)){
 			$this->set('org',$org);
+			$this->set('isOwner', $this->Organisation->isCurrentUserOwner($this->Auth->user('id')));
 		}
 	}
 
