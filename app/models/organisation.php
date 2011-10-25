@@ -128,4 +128,17 @@ class Organisation extends AppModel {
 		)
 	);
 
+
+	function isCurrentUserOwner($user_id){
+			$ownerId = $this->Permission->find('first', array(
+				'fields' => 'Permission.user_id',
+				'conditions' => array(
+					'Permission.organisation_id' => $this->field('id'),
+					'Permission.permissionType' => 'Owner'
+				)
+			));
+
+			return $ownerId['Permission']['user_id'] == $user_id;
+	}
+
 }

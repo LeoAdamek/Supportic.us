@@ -39,7 +39,12 @@ class OrganisationsController extends AppController {
 		$this->set('organisationCategories', $this->Organisation->OrganisationCategory->getRootCategories());
 		$user_id = $this->Auth->user('id');
 
-		$user_isOwner = $this->Organisation->Permission->field('user_id') == $this->Auth->user('id'); // Check the user actually owns this organisation.
+	 	$user_isOwner = $this->Organisation->isCurrentUserOwner($this->Auth->user('id'));	
+
+		if(!$user_isOwner){
+			$this->Session->setFlash("You don't have permission to edit this organisation.");
+			$this->redirect(array('action' => 'index'));
+		}
 
 		if(!$id && empty($this->data)){
 			$this->Session->setFlash("Invalid Organisation");
