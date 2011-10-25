@@ -88,10 +88,6 @@ class User extends AppModel {
 		'Country' => array(
 			'className' => 'Country',
 			'foreignKey' => 'country_id'
-		),
-		'Role' => array(
-			'className' => 'Role',
-			'foreignKey' => 'role_id'
 		)
 	);
 
@@ -134,21 +130,5 @@ class User extends AppModel {
 		}
 	}
 
-	function parentNode(){
-		if(!$this->id && empty($this->data)){
-			return null;
-		}
-
-		if(isset($this->data['User']['role_id'])){
-			$roleId = $this->data['User']['role_id'];
-		}else{
-			$roleId = $this->field('role_id');
-		}
-		if(!$roleId){
-			return null;
-		}else{
-			return array('Role' => array('id' => $roleId));
-		}
-	}
 
 }

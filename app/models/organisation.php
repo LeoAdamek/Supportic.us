@@ -79,10 +79,6 @@ class Organisation extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		),
-		'Permission' => array(
-			'className' => 'Permission',
-			'foreignKey' => 'organisation_id',
 		)
 	);
 
@@ -125,6 +121,10 @@ class Organisation extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
+		),
+		'Permission' => array(
+			'className' => 'Permission',
+			'foreignKey' => 'organisation_id',
 		)
 	);
 

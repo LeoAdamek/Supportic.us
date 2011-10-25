@@ -39,7 +39,7 @@ class OrganisationsController extends AppController {
 		$this->set('organisationCategories', $this->Organisation->OrganisationCategory->getRootCategories());
 		$user_id = $this->Auth->user('id');
 
-		$useer_isOwner = ($organisation['User']['id'] == $user_id);
+		$user_isOwner = $this->Organisation->Permission->field('user_id') == $this->Auth->user('id'); // Check the user actually owns this organisation.
 
 		if(!$id && empty($this->data)){
 			$this->Session->setFlash("Invalid Organisation");
@@ -78,6 +78,14 @@ class OrganisationsController extends AppController {
 		if(!empty($this->data)){
 			$this->Organisation->create(); // Make a new Organisation
 			if($this->Organisation->save($this->data)){
+
+				$this->Organisation->Permission->create();
+				$this->Organisation->Permission->set('organisation_id', $this->Organisation->field('id'));
+				$this->Organisation->Permission->set('user_id', $this->Auth->user('id'));
+				$this->Organisation->Permission->set('permissionType', 'Owner');
+				$this->Organisation->Permission->save();
+
+
 				$this->Session->setFlash("Organisation created sucessfully");
 				$this->redirect(array('controller' => 'organisations', 'action' => 'index'));
 			}else{
