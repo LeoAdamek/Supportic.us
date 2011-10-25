@@ -84,13 +84,25 @@ class DATABASE_CONFIG {
 		'encoding' => 'utf8',
 	);
 
-	var $test = array(
+	var $test = array( // Database for Testing Suite.
 		'driver' => 'mysqli',
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'supporticus',
 		'password' => 'CUsYXdn568FBhDzY',
 		'database' => 'supporticus_testing',
+		'prefix' => '',
+		'encoding' => 'utf8',
+	);
+
+
+	var $acl = array( // ACL Database
+		'driver' => 'mysqli',
+		'persistent' => false,
+		'host' => 'localhost',
+		'login' => 'supporticus',
+		'password' => 'CUsYXdn568FBhDzY',
+		'database' => 'supporticus_acl',
 		'prefix' => '',
 		'encoding' => 'utf8',
 	);

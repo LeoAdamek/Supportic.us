@@ -240,7 +240,7 @@
  * access control lists.
  */
 	Configure::write('Acl.classname', 'DbAcl');
-	Configure::write('Acl.database', 'dev');
+	Configure::write('Acl.database', 'acl');
 
 /**
  * If you are on PHP 5.3 uncomment this line and correct your server timezone

@@ -81,6 +81,10 @@ class UserTestCase extends CakeTestCase {
 		);
 
 		$Ucases = $this->__generateCasesOnGivenConditions($baseTestData, $additionalTestCases, 1);
+
+
+		echo "<h2> Testing Validation </h2>";
+
 		foreach($Ucases as $expected => $cases){
 			foreach($cases as $case){
 				$result = $this->User->save($case);

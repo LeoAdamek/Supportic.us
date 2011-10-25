@@ -45,7 +45,7 @@ class OrganisationsController extends AppController {
 			$this->Session->setFlash("Invalid Organisation");
 			$this->redirect(array('action' => 'index'));
 		}else{
-			if(!empty($this->data) && $user_isOwner){
+			if(!empty($this->data) && $user_isOwner){ // Only the owner can edit an organisation
 				if($this->Organisation->save($this->data)){
 					$this->Session->setFlash("Changes Made Sucessfully");
 				}
