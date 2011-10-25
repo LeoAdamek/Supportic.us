@@ -85,7 +85,7 @@
  *
  * [Note Routing.admin is deprecated in 1.3.  Use Routing.prefixes instead]
  */
-	//Configure::write('Routing.prefixes', array('admin'));
+	Configure::write('Routing.prefixes', array('admin'));
 
 /**
  * Turn off all caching application-wide.
@@ -240,7 +240,7 @@
  * access control lists.
  */
 	Configure::write('Acl.classname', 'DbAcl');
-	Configure::write('Acl.database', 'acl');
+	Configure::write('Acl.database', 'default');
 
 /**
  * If you are on PHP 5.3 uncomment this line and correct your server timezone
