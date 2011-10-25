@@ -30,6 +30,13 @@
 		'type' => 'hidden'
 	));
 
+
+	// Hidden input to get the HABTM relationship
+	echo $this->Form->input('User.id', array(
+		'type' => 'hidden',
+		'value' => $session->read('Auth.User.id')
+	));
+
 ?>
 
 	<div id="OrganisationSelectTree"></div>

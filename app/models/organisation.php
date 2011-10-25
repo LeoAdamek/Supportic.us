@@ -80,12 +80,9 @@ class Organisation extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'User' => array(
-			'className' => 'User',
-			'foreignKey' => 'user_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
+		'Permission' => array(
+			'className' => 'Permission',
+			'foreignKey' => 'organisation_id',
 		)
 	);
 

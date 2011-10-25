@@ -77,7 +77,6 @@ class OrganisationsController extends AppController {
 
 		if(!empty($this->data)){
 			$this->Organisation->create(); // Make a new Organisation
-			$this->Organisation->set('user_id',$this->Auth->user('id'));
 			if($this->Organisation->save($this->data)){
 				$this->Session->setFlash("Organisation created sucessfully");
 				$this->redirect(array('controller' => 'organisations', 'action' => 'index'));

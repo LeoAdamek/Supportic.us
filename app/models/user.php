@@ -3,12 +3,6 @@ class User extends AppModel {
 	var $name = 'User';
 	var $displayField = 'name';
 
-	var $actsAs = array(
-		'Acl' => array(
-			'type' => 'requester'
-		)
-	);
-
 	var $validate = array(
 		'name' => array(
 			'notempty' => array(
@@ -98,6 +92,13 @@ class User extends AppModel {
 		'Role' => array(
 			'className' => 'Role',
 			'foreignKey' => 'role_id'
+		)
+	);
+
+	var $hasMany = array(
+		'Permission' => array(
+			'className' => 'Permission',
+			'foreignKey' => 'user_id'
 		)
 	);
 

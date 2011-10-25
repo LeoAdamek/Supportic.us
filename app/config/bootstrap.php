@@ -48,4 +48,11 @@
  * Inflector::rules('plural', array('rules' => array(), 'irregular' => array(), 'uninflected' => array()));
  *
  */
+
+/*
+ * [[ Include the ACL controller config ]]
+ */
+
+// require_once(ROOT . DS . 'plugins' . DS . 'acl' . DS . 'config' . DS . 'bootstrap.php');
+
 ?>
