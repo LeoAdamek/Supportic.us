@@ -103,4 +103,98 @@ class OrganisationsController extends AppController {
 		}
 	}
 
+	function admin_add_access($orgId){
+		/*
+		 * @about: Allows users with permission editing access to edit the permissions of other users.
+		 */
+
+		$this->Organisation->id = $orgId;
+
+		if(!$this->Organisation->exists()){
+			$this->Session->setFlash("This Organisation Does Not Exist");
+			$this->redirect(array(
+				'controller' => 'organisations',
+				'action' => 'index'
+			));
+		}else{
+			$user_hasPermission = $this->Organisation->hasPermission($this->Auth->user('id'), 'EditPermissions');
+
+			if(!$user_hasPermission){
+				$this->Session->setFlash("You do not have permission to edit the permissions of users of this organisation");
+				$this->redirect(array(
+					'controller' => 'organisations',
+					'action' => 'index'
+				));
+			}else{
+				if(!empty($this->data)){
+					// The user is cleared, the organisation exists, and they submitted data.
+
+					// Check the user exists
+					$this->Organisation->Permission->User->email = $this->data['User']['email'];
+
+					if(!$this->Organisation->Permission->User->exists()){
+						$this->_sendInvition(array(
+							'invitor' => array(
+								'name' => $this->Auth->user('name'),
+								'email' => $this->Auth->user('email')
+							),
+							'invitee' => $this->data['User']['email'],
+							'organisation' => $this->Organisation->field('name')
+						));
+						$this->Session->setFlash("{$this->data['User']['email']} Doesn't have an account, but we've sent an invite to them.");
+						$this->redirect(array(
+							'controller' => 'organisations',
+							'action' => 'index'
+						));
+					}else{
+						$this->Organisation->Permission->create();
+						$this->Organisation->Permission->set('organisation_id' , $this->Organisation->id);
+						$this->Organisation->Permission->set('permissionType' , $this->data['Permission']['permissionType']);
+
+						$user = $this->Organisation->Permission->User->findByEmail($this->data['User']['email'], array(
+							'fields' => 'User.id'
+						)); // Get the ID of the user who the permission is for.
+
+						$this->Organisation->Permission->set('user_id', $user['User']['id']);
+
+						if($this->Organisation->Permission->save()){
+							// The Permission was saved successfully.
+							$this->Session->setFlash("The User {$this->data['User']['email']} was granted permission to {$this->data['Permission']['permissionType']}.");
+							$this->data = null;
+						}else{
+							// There was an error saving the permission.
+							$this->Session->setFlash("There was an error creating the permission.");
+						}
+					}
+				}
+			}
+		}
+		
+		/*
+		 * Generate the list of permission nodes
+		 */
+
+		$this->set('permissionTypes', array(
+			'Edit' => 'Can Edit this Organisation',
+			'EditPermissions' => 'Can Edit the permissions within this Organisation',
+		));
+
+	}
+
+	function _sendInvitation($options = array()){
+
+		/*
+		 * @about: If a user is granted a permission, but they do not have an account.
+		 * An invitation is sent to them from the user who wants to grant them a permission.
+		 */
+
+		$this->Email->from = "Supportic.us <invitation@supportic.us>";
+		$this->Email->to = "You <{$options['invitee']}>";
+		$this->Email->subject = "You have been invited to Supportic.us by {$options['invitor']['name']}!";
+		$this->Email->template = 'invitation';
+		$this->Email->sendAs = 'both';
+		$this->set('data', $options);
+		$this->Email->send();
+	}
+
 }
