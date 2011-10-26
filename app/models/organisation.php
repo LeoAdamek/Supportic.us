@@ -141,4 +141,38 @@ class Organisation extends AppModel {
 			return $ownerId['Permission']['user_id'] == $user_id;
 	}
 
+	function getOwner($orgId){
+		$ownerId = $this->Permission->find('first', array(
+			'fields' => 'Permission.user_id',
+			'conditions' => array(
+				'Permission.organisation_id' => $orgId,
+				'Permission.permissionType' => 'Owner'
+			)
+		));
+
+		$owner = $this->Permission->User->find('first', array(
+			'conditions' => array(
+				'User.id' => $ownerId['Permission']['user_id']
+			)
+		));
+
+		return $owner;
+	}
+
+	function afterFind($results, $primary){
+		/*
+		 * @about: When we find an organisation, we also want to get its owner.
+		 */
+
+		if(!$primary){
+			return $results; // Do nothing if the organisations were queried as an assosiation.
+		}
+
+		foreach($results as $index => $values){
+			if(isset($values['Organisation']['id'])){
+				$results[$index] = array_merge($values, $this->getOwner( $values['Organisation']['id'] ));
+			}
+		}
+		return $results;
+	}
 }

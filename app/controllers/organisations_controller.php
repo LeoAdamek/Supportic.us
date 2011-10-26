@@ -29,6 +29,7 @@ class OrganisationsController extends AppController {
 		if(!empty($org)){
 			$this->set('org',$org);
 			$this->set('isOwner', $this->Organisation->isCurrentUserOwner($this->Auth->user('id')));
+			$this->set('owner', $this->Organisation->getOwner($this->Organisation->field('id')));
 		}
 	}
 
@@ -85,6 +86,7 @@ class OrganisationsController extends AppController {
 			$this->Organisation->create(); // Make a new Organisation
 			if($this->Organisation->save($this->data)){
 
+				// Make sure that the user who created this organisation is set as its owner.
 				$this->Organisation->Permission->create();
 				$this->Organisation->Permission->set('organisation_id', $this->Organisation->field('id'));
 				$this->Organisation->Permission->set('user_id', $this->Auth->user('id'));
