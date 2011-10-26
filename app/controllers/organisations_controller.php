@@ -88,7 +88,7 @@ class OrganisationsController extends AppController {
 
 				// Make sure that the user who created this organisation is set as its owner.
 				$this->Organisation->Permission->create();
-				$this->Organisation->Permission->set('organisation_id', $this->Organisation->field('id'));
+				$this->Organisation->Permission->set('organisation_id', $this->Organisation->getInsertId() );
 				$this->Organisation->Permission->set('user_id', $this->Auth->user('id'));
 				$this->Organisation->Permission->set('permissionType', 'Owner');
 				$this->Organisation->Permission->save();

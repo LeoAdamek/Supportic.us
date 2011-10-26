@@ -142,11 +142,12 @@ class Organisation extends AppModel {
 	}
 
 	function getOwner($orgId){
+
 		$ownerId = $this->Permission->find('first', array(
-			'fields' => 'Permission.user_id',
+			'fields' => 'user_id',
 			'conditions' => array(
-				'Permission.organisation_id' => $orgId,
-				'Permission.permissionType' => 'Owner'
+				'organisation_id' => $orgId,
+				'permissionType' => 'Owner'
 			)
 		));
 
@@ -170,7 +171,8 @@ class Organisation extends AppModel {
 
 		foreach($results as $index => $values){
 			if(isset($values['Organisation']['id'])){
-				$results[$index] = array_merge($values, $this->getOwner( $values['Organisation']['id'] ));
+				$owner = $this->getOwner( $values['Organisation']['id'] );
+				$results[$index]['User'] = $owner['User']; // Set the owner to the 'User' Model for the organisation
 			}
 		}
 		return $results;
