@@ -28,7 +28,7 @@ class OrganisationsController extends AppController {
 
 		if(!empty($org)){
 			$this->set('org',$org);
-			$this->set('isOwner', $this->Organisation->isCurrentUserOwner($this->Auth->user('id')));
+			$this->set('canEdit', $this->Organisation->hasPermission($this->Auth->user('id') , 'Edit'));
 			$this->set('owner', $this->Organisation->getOwner($this->Organisation->field('id')));
 		}
 	}
@@ -41,9 +41,10 @@ class OrganisationsController extends AppController {
 		$this->set('organisationCategories', $this->Organisation->OrganisationCategory->getRootCategories());
 		$user_id = $this->Auth->user('id');
 
-	 	$user_isOwner = $this->Organisation->isCurrentUserOwner($this->Auth->user('id'));	
+		$user_canEdit = $this->Organisation->hasPermission($this->Auth->user('id') , 'Edit'); // Check the current user has permission to edit this organisation
 
-		if(!$user_isOwner){
+		if(!$user_canEdit){
+			// Deny the user the ability to edit this organisation (because they don't have permission)
 			$this->Session->setFlash("You don't have permission to edit this organisation.");
 			$this->redirect(array('action' => 'index'));
 		}
@@ -88,7 +89,7 @@ class OrganisationsController extends AppController {
 
 				// Make sure that the user who created this organisation is set as its owner.
 				$this->Organisation->Permission->create();
-				$this->Organisation->Permission->set('organisation_id', $this->Organisation->getInsertId() );
+				$this->Organisation->Permission->set('organisation_id', $this->Organisation->getInsertId() ); // Get the ID of the organisation just saved
 				$this->Organisation->Permission->set('user_id', $this->Auth->user('id'));
 				$this->Organisation->Permission->set('permissionType', 'Owner');
 				$this->Organisation->Permission->save();

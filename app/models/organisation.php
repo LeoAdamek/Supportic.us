@@ -177,4 +177,40 @@ class Organisation extends AppModel {
 		}
 		return $results;
 	}
+
+	function hasPermission($user_id, $permission_type, $organisation_id = null){
+		/*
+		 * @about: Check that the $user_id has the $permission_type for $organisation_id
+		 * Checks for $permission_type and the 'Owner' Permission.
+		 *
+		 * @returns: bool
+		 *
+		 * @param:
+		 * 	$user_id - Integer
+		 * 	$permission_type - String
+		 * 	$organisation_id - Integer (Optional: Default, $this->id)
+		 *
+		 */
+
+		if(!$organisation_id && !isset($this->id)){
+			return false;
+		}elseif(!$organisation_id && isset($this->id)){
+			$organisation_id = $this->id;
+		}
+
+		$permission = $this->Permission->find('all', array(
+			'conditions' => array(
+				'Permission.user_id' => $user_id,
+				'Permission.organisation_id' => $organisation_id,
+				'Permission.permissionType' => array($permission_type, 'Owner') // check for $permission_type OR 'Owner'
+			)
+		));
+
+		if($permission){
+			return true;
+		}else{
+			return false;
+		}
+
+	}
 }

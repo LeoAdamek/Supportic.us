@@ -15,10 +15,6 @@
 	$org['Organisation']['id'],
 	$org['Organisation']['slug']
 ))?>
-
-				<?php if($org['User']['id'] == $session->read('Auth.User.id')){
-					echo $this->Html->link('Edit' , array('controller' => 'organisations', 'action' => 'edit', $org['Organisation']['id'], $org['Organisation']['slug'] ), array('class' => 'edit_action'));
-				} ?>
 			
 			</td>
 			<td><?=$org['OrganisationCategory']['name']?></td>

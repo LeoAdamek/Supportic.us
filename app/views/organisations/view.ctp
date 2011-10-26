@@ -9,7 +9,7 @@
 
 	<h3><?php echo $this->Html->link('Submit A Ticket', array('controller' => 'tickets', 'action' => 'add', $org['Organisation']['id'])); ?></h3>
 
-	<?php if($isOwner): ?>
+	<?php if($canEdit): ?>
 
 		<?=$this->Html->link('Edit This Organisation', array(
 			'controller' => 'organisations',
