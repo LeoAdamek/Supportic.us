@@ -104,6 +104,7 @@ div#header h1 a:hover {
 div#navigation {
 	background-color: #6791BF;
 	background-image: -moz-linear-gradient(bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
+	background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
 	margin: 0;
 	width: 100%;
 	float: left;
