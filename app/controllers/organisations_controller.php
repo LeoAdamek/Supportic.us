@@ -10,6 +10,8 @@ class OrganisationsController extends AppController {
 		)
 	);
 
+	var $components = array('Email');
+
 	function beforeFilter(){
 		parent::beforeFilter();
 		$this->Auth->deny('add','edit','delete','manage');
@@ -123,23 +125,24 @@ class OrganisationsController extends AppController {
 				$this->Session->setFlash("You do not have permission to edit the permissions of users of this organisation");
 				$this->redirect(array(
 					'controller' => 'organisations',
-					'action' => 'index'
+					'action' => 'index',
+					'prefix' => null
 				));
 			}else{
 				if(!empty($this->data)){
 					// The user is cleared, the organisation exists, and they submitted data.
 
 					// Check the user exists
-					$this->Organisation->Permission->User->email = $this->data['User']['email'];
+					$user = $this->Organisation->Permission->User->findByEmail($this->data['User']['email']);
 
-					if(!$this->Organisation->Permission->User->exists()){
-						$this->_sendInvition(array(
+					if(!$user){
+						$this->_sendInvitation(array(
 							'invitor' => array(
 								'name' => $this->Auth->user('name'),
 								'email' => $this->Auth->user('email')
 							),
 							'invitee' => $this->data['User']['email'],
-							'organisation' => $this->Organisation->field('name')
+							'organisation' => $this->Organisation->name
 						));
 						$this->Session->setFlash("{$this->data['User']['email']} Doesn't have an account, but we've sent an invite to them.");
 						$this->redirect(array(
@@ -173,6 +176,8 @@ class OrganisationsController extends AppController {
 		/*
 		 * Generate the list of permission nodes
 		 */
+
+		$this->set('org', $this->Organisation->read());
 
 		$this->set('permissionTypes', array(
 			'Edit' => 'Can Edit this Organisation',
