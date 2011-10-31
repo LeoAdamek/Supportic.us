@@ -11,6 +11,6 @@
 <li>Please Note: Internet Explorer (Any Version) is <strong>not</strong> supported by <em>Supportic.us</em> (How... ironic?)</li>
 </ul>
 <h4>If the editor appears but is not working properly</h4>
-<p>You may be running an unsupported browser, the rich text editing features of <em>Supportic.us</em> require a modern browser to work properly.
-Please upgrade to a more modern browser, we recommend [Mozilla Firefox 7.0 (Free Download)][http://getfirefox.com]
-Please note that the rich text editing features of <em>Supportic.us</em> are <strong>not</strong> supported in mobile browsers (such as iPhone and Android)</p>
+<p>You may be running an unsupported browser, the rich text editing features of <em>Supportic.us</em> require a modern browser to work properly.</p>
+<p>Please upgrade to a more modern browser, we recommend <a href="http://getfirefox.com">Mozilla Firefox 7.0 (Free Download)</a></p>
+<p>Please note that the rich text editing features of <em>Supportic.us</em> are <strong>not</strong> supported in mobile browsers (such as iPhone and Android)</p>

@@ -15,7 +15,10 @@ If the editor does not appear at all, you may have javascript disabled, to enabl
 
 #### If the editor appears but is not working properly
 You may be running an unsupported browser, the rich text editing features of _Supportic.us_ require a modern browser to work properly.
-Please upgrade to a more modern browser, we recommend [Mozilla Firefox 7.0 (Free Download)][http://getfirefox.com]
+
+Please upgrade to a more modern browser, we recommend [Mozilla Firefox 7.0 (Free Download)](http://getfirefox.com)
+
 Please note that the rich text editing features of _Supportic.us_ are **not** supported in mobile browsers (such as iPhone and Android)
+
 
 
