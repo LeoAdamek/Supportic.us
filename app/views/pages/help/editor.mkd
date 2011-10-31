@@ -1,0 +1,21 @@
+### Help: Editor
+#### Help with the rich text editing on Supportic.us
+
+#### The editor doesn't work!
+
+If the editor does not work there are multiple options,
+
+#### If the editor does not appear at all...
+If the editor does not appear at all, you may have javascript disabled, to enable it, please visit the page appropreate for your browser:
+
+* [Mozilla Firefox](http://support.mozilla.com/en-US/kb/JavaScript?s=javascript&r=0&as=s)
+* [Google Chrome](http://www.google.com/support/chrome/bin/answer.py?answer=114662)
+* [Apple Safari]()
+* Please Note: Internet Explorer (Any Version) is **not** supported by _Supportic.us_ (How... ironic?)
+
+#### If the editor appears but is not working properly
+You may be running an unsupported browser, the rich text editing features of _Supportic.us_ require a modern browser to work properly.
+Please upgrade to a more modern browser, we recommend [Mozilla Firefox 7.0 (Free Download)][http://getfirefox.com]
+Please note that the rich text editing features of _Supportic.us_ are **not** supported in mobile browsers (such as iPhone and Android)
+
+
