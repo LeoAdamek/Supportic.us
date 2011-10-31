@@ -22,8 +22,17 @@ var org_id = <?=$info['Organisation']['id']?>;
 
 	echo $this->Form->input('Message.body', array(
 		'label' => 'Tell us about your problem...',
+		'rows' => '50',
 		'class' => 'tinymce'
 	));
+
+	echo $this->Html->link('Editor Help', '/pages/help/editor');
+
+?>
+
+	<br /><br />
+
+<?php
 
 	echo $this->Form->input('Category_id', array(
 		'type' => 'hidden',

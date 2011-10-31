@@ -5,9 +5,19 @@ class TicketsController extends AppController {
 	var $name = 'Tickets';
 	var $helpers = array('Time');
 
+	var $paginate = array(
+		'fields' => array(
+			'Organisation.*','Ticket.*'
+		),
+		'limit' => 25,
+		'order' => array(
+			'Ticket.postdate' => 'desc'
+		)
+	);
+
 	function beforeFilter(){
 		parent::beforeFilter();
-		$this->Auth->deny('add','view');
+		$this->Auth->deny('add','view','my_tickets');
 	}
 
 	function getSubCategories($org_id = NULL, $parent_id = null){
@@ -26,6 +36,15 @@ class TicketsController extends AppController {
 		echo json_encode($categories);
 	}
 
+
+	function my_tickets(){
+			$this->set('tickets',$this->paginate(
+				array(
+					'Ticket.user_id' => $this->Auth->user('id')
+				)
+			)
+		);
+	}
 
 	function add($org_id = NULL){
 		if($org_id){
