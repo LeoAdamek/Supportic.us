@@ -5,7 +5,8 @@ $(function(){
 		indexed: true,
 		on_each_change: '../getSubCategories',
 		lazy_load: '../getSubCategories',
-		choose: 'Choose A Category...'
+		choose: 'Choose A Category...',
+		org_id: org_id
 		
 	};
 
@@ -16,7 +17,7 @@ $(function(){
 				.each(function(){ labels.push($(this).text()); });
 	}
 	
-	$.getJSON('../getSubCategories', function(tree){
+	$.getJSON('../getSubCategories/'+org_id, function(tree){
 		$('input#categoryId').optionTree(tree,options).change(displayParents);
 	});
 

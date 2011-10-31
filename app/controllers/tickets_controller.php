@@ -10,12 +10,16 @@ class TicketsController extends AppController {
 		$this->Auth->deny('add','view');
 	}
 
-	function getSubCategories($parent_id = null){
+	function getSubCategories($org_id = NULL, $parent_id = null){
 		$this->autoRender = false;
-		if($parent_id){
-			$categories = $this->Ticket->Category->getChildCategories($parent_id);
+		if($org_id){
+			if($parent_id){
+				$categories = $this->Ticket->Category->getChildCategories($org_id, $parent_id);
+			}else{
+				$categories = $this->Ticket->Category->getRootCategories($org_id);
+			}
 		}else{
-			$categories = $this->Ticket->Category->getRootCategories();
+			$categories = null;
 		}
 		header('Content-type: application/json');
 		Configure::write('debug',0);
@@ -48,7 +52,6 @@ class TicketsController extends AppController {
 					}
 				}
 
-				$this->set('categories', $this->Ticket->Category->find('list', array('fields' => 'Category.name', 'conditions' => array('Category.organisation_id' => $org_id))));
 				$this->set('info',$this->Ticket->Organisation->read(null));
 				$this->set('priorities', array(
 					'Low' => 'Low',

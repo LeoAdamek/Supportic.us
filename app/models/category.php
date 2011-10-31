@@ -61,20 +61,22 @@ class Category extends AppModel {
 	);
 
 
-	function getRootCategories(){
+	function getRootCategories($org_id){
 		return $this->find('list', array(
 			'fields' => 'Category.name',
 			'conditions' => array(
-				'Category.category_parent_id' => null
+				'Category.category_parent_id' => null,
+				'Category.organisation_id' => $org_id
 			)
 		));
 	}
 
-	function getChildCategories($parent_id){
+	function getChildCategories($org_id, $parent_id){
 		return $this->find('list', array(
 			'fields' => 'Category.name',
 			'conditions' => array(
-				'Category.category_parent_id' => $parent_id
+				'Category.category_parent_id' => $parent_id,
+				'Category.organisation_id' => $org_id
 			)
 		));
 	}
