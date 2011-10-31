@@ -7,6 +7,9 @@ var org_id = <?=$info['Organisation']['id']?>;
 
 <?php
 
+	echo $this->Html->script('tiny_mce/tiny_mce.js');
+	echo $this->Html->script('tiny_mce/jquery.tinymce.js');
+	echo $this->Html->script('tickets/tinymce.js');
 	echo $this->Html->script('jquery.optionTree_ticket');
 	echo $this->Html->script('ticket_categories_filter');
 
@@ -18,7 +21,8 @@ var org_id = <?=$info['Organisation']['id']?>;
 	));
 
 	echo $this->Form->input('Message.body', array(
-		'label' => 'Tell us about your problem...'
+		'label' => 'Tell us about your problem...',
+		'class' => 'tinymce'
 	));
 
 	echo $this->Form->input('Category_id', array(

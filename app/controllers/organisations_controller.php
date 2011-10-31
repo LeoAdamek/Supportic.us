@@ -202,4 +202,40 @@ class OrganisationsController extends AppController {
 		$this->Email->send();
 	}
 
+	function admin_edit_access($orgId){
+		/*
+		 * @about: Allows permitted users to edit and delete already assigned permissions
+		 */
+		$this->Organisation->id = $orgId;
+		if(!$this->Organisation->exists()){
+			$this->Session->setFlash("This Organisation Does Not Exist");
+			$this->redirect(array(
+				'controller' => 'Organisations',
+				'action' => 'index'
+			));
+		}else{
+			$hasPermission = $this->Organisation->hasPermission($this->Auth->user('id'), 'EditPermissions');
+			if(!$hasPermission){
+				$this->Session->setFlash("You do not have permission to edit the permissions for this organisation");
+				$this->redirect(array(
+					'controller' => 'Organisations',
+					'action' => 'index'
+				));
+			}else{
+				// Load the permissions data, querying all related data.
+				$permissions = $this->Organisation->Permission->find('all', array(
+					'fields' => array('Organisation.*, Permission.*, User.*'),
+					'conditions' => array(
+						'Permission.organisation_id' => $orgId,
+						'Permission.user_id !=' => $this->Auth->user('id'), /* Users can't edit their own permissions */
+						'Permission.permissionType !=' => 'Owner' // The owner's permissions cannot be edited.
+					)
+				));
+
+				$this->set('permissions',$permissions);
+
+			}
+		}
+	}
+
 }
