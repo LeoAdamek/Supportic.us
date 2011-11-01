@@ -93,8 +93,8 @@ class TicketsController extends AppController {
 		$this->Ticket->id = $ticket_id;
 		if($this->Ticket->exists()){
 			// The Ticket is real
-			$ticket = $this->Ticket->read();
-			if($ticket['User']['id'] != $this->Auth->user('id') && $ticket['Organisation']['User']['id'] != $this->Auth->user('id')){ // This line will be changed.
+			$ticket = $this->Ticket->findById($ticket_id);
+			if($ticket['User']['id'] != $this->Auth->user('id') && !$this->Ticket->Organisation->hasPermission($this->Auth->user('id'), 'Tickets')){
 				$this->Session->setFlash("This is not your ticket.");
 				$this->redirect(array('controller'=>'organisations','action'=>'index'));
 			}else{

@@ -83,8 +83,7 @@ blockquote {
 
 div#header {
 	padding-left: 10px;
-	padding-top: 10px;
-	background-color: #6791BF;
+	margin: 0px;
 }
 
 div#header h1 {
