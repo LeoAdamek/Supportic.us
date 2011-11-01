@@ -1,3 +1,19 @@
+<h1>Organisations</h1>
+
+
+<a id="searchToggle">Search Organisations</a>
+<div id="searchform">
+<?php
+	echo $this->Form->create('Organisation',array('controller' => 'Organisations','action' => 'index'));
+	echo $this->Form->input('Organisation.name');
+	echo $this->Form->input('Organisation.country');
+	echo $this->Form->end('Search');
+?>
+<?=$this->Html->script('organisations_search')?>
+</div>
+
+
+
 
 <table>
 	<tr>

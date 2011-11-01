@@ -122,6 +122,8 @@ div#navigation {
 
 	text-shadow: rgba(255,255,255,0.3) 0px -1px 0px;
 	font-weight: bold;
+
+	padding-top: 5px;
 }
 
 div#userpane {
@@ -507,4 +509,9 @@ a.action {
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
+}
+
+div#searchform {
+	display: none;
+	background: #6791BF; /* Placeholder Value */
 }

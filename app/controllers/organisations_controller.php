@@ -22,7 +22,21 @@ class OrganisationsController extends AppController {
 		 * List the Organisations is a paginated way.
 		 */
 		$this->Organisation->recursive = 0;
-		$this->set('organisations', $this->paginate());
+		if(!empty($this->data)){
+			$this->set('organisations', $this->paginate(
+				array(
+					'Organisation.name LIKE' => "%{$this->data['Organisation']['name']}%",
+					'Organisation.country_id' => $this->data['Organisation']['country']
+				)
+			));
+		}else{
+			$this->set('organisations', $this->paginate());
+		}
+
+		$countries = $this->Organisation->Country->find('list');
+		array_unshift($countries, array('0' => 'Any Country'));
+		$this->set('countries', $countries);
+
 	}
 
 	function view($org_id = NULL){
