@@ -23,12 +23,20 @@ class OrganisationsController extends AppController {
 		 */
 		$this->Organisation->recursive = 0;
 		if(!empty($this->data)){
+			if($this->data['Organisation']['country'] != 0){
 			$this->set('organisations', $this->paginate(
 				array(
 					'Organisation.name LIKE' => "%{$this->data['Organisation']['name']}%",
 					'Organisation.country_id' => $this->data['Organisation']['country']
 				)
 			));
+			}else{
+				$this->set('organisations', $this->paginate(
+					array(
+						'Organisation.name LIKE' => "%{$this->data['Organisation']['name']}%"
+					)
+				));
+			}
 		}else{
 			$this->set('organisations', $this->paginate());
 		}
