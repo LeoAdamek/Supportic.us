@@ -3,6 +3,7 @@
 class TicketsController extends AppController {
 
 	var $name = 'Tickets';
+	var $uses = array('Ticket','Organisation');
 	var $helpers = array('Time');
 
 	var $paginate = array(
@@ -38,12 +39,53 @@ class TicketsController extends AppController {
 
 
 	function my_tickets(){
+		/*
+		 * @about: Show a user a pagnated, searchable list of their tickets
+		 */
+
+		if(empty($this->data)){
 			$this->set('tickets',$this->paginate(
-				array(
-					'Ticket.user_id' => $this->Auth->user('id')
-				)
+					array(
+						'Ticket.user_id' => $this->Auth->user('id')
+					)
+				));
+		}else{
+			// Process a search request
+			if($this->data['Ticket']['priority'] == 'Any'){
+				$this->set('tickets', $this->paginate(
+					array(
+						'Ticket.user_id' => $this->Auth->user('id'),
+						'Ticket.title LIKE' => "%{$this->data['Ticket']['title']}%"
+					)
+				));
+			}else{
+				$this->set('tickets', $this->paginate(
+					array(
+						'Ticket.user_id' => $this->Auth->user('id'),
+						'Ticket.title LIKE' => "%{$this->data['Ticket']['title']}%",
+						'Ticket.priority' => $this->data['Ticket']['priority']
+					)
+				));
+			}
+		}
+		$this->set('priorities',
+			array(
+				'Low' => 'Low',
+				'Normal' => 'Normal',
+				'Important' => 'Important',
+				'Urgent' => 'Urgent'
 			)
-		);
+		);		
+	}
+
+	function my_org_tickets(){
+		if(empty($this->data)){
+			// The user did not submit a search
+			// Display all
+		}else{
+			// User submitted a search
+			// Process it
+		}
 	}
 
 	function add($org_id = NULL){

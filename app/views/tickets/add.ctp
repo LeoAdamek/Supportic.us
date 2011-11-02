@@ -28,6 +28,8 @@ var org_id = <?=$info['Organisation']['id']?>;
 
 	echo $this->Html->link('Editor Help', '/pages/help/editor');
 
+	echo $this->Form->input('Ticket.priority');
+
 ?>
 
 	<br /><br />

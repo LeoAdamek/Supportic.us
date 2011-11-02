@@ -3,6 +3,26 @@
 <h4>About</h4>
 <p>Here are a list of all tickets posted by you.</p>
 
+<div id="searchform">
+<h3> Search Your Tickets </h3>
+
+<?php
+
+	// Tickets search form
+	echo $this->Form->create();
+	echo $this->Form->input('Ticket.title');
+	echo $this->Form->input('Ticket.priority');
+	echo $this->Form->end('Search');
+
+?>
+
+
+</div>
+<a id="searchToggle">Search These Tickets</a>
+
+
+
+
 	<table id="tickets">
 		<tr>
 			<th span="col"><?=$this->Paginator->sort('Date','Ticket.postdate')?></th>
@@ -31,3 +51,5 @@
 
 
 	</table>
+
+<?=$this->Html->script('tickets/ticket_search.js')?>
