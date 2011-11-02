@@ -27,6 +27,7 @@
 				<ul>
 					<li><?=$this->Html->link('Home','/')?></li>
 					<li><?=$this->Html->link('Organisations', array('controller' => 'Organisations', 'action' => 'index'))?></li>
+					<li><?=$this->Html->link('My Tickets', array('controller' => 'Tickets', 'action' => 'my_tickets'))?></li>
 				</ul>
 
 				<?php // End Global Navigation ?>
