@@ -5,7 +5,7 @@
 <div id="searchform">
 <?php
 	echo $this->Form->create('Organisation',array('controller' => 'Organisations','action' => 'index'));
-	echo $this->Form->input('Organisation.name');
+	echo $this->Form->input('Organisation.name', array('class' => 'search'));
 	echo $this->Form->input('Organisation.country');
 	echo $this->Form->end('Search');
 ?>

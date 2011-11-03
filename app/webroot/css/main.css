@@ -324,6 +324,20 @@ form .input {
 	color: #444
 }
 
+form input[type=text] {
+	border: 2px #CCC solid;
+}
+
+form input[type=text].search {
+	height: 24px;
+	border-radius: 24px;
+	padding-left: 36px;
+	padding-right: 26px;
+	background-image: url('../img/icons/magnifier.png');
+	background-repeat: no-repeat;
+	background-position: 98% center;
+}
+
 form .required {
 	font-weight: bold;
 }
