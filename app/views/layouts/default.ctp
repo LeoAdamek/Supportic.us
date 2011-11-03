@@ -8,6 +8,7 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 
 		<?=$this->Html->css('main.css')?>
+		<?=$this->Html->css('print.css', 'stylesheet', array('media' => 'print'))?>
 		<?=$this->Html->script('jQuery.min')?>
 		<?=$this->Html->script('vtip-min')?>
 		<?=$scripts_for_layout?>

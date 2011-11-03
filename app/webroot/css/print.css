@@ -1,0 +1,63 @@
+/*
+ * Print.css
+ *
+ * CSS for print media
+ */
+
+@media print
+
+/*
+ * General overrides
+ */
+
+body {
+	background-color: white;
+	color: black;
+	font-family: Helvetica,Arial,sans-serif;
+	font-size: 12pt;
+}
+
+
+div#header {
+	background-color: white;
+	color: black;
+}
+
+div#header h1 {
+	font-size: 24pt;
+	font-family: Helvetica,Arial,sans-serif;
+	letter-spacing: 100%;
+}
+
+h1, h2, h3 {
+	color: #333;
+	font-weight: bold;
+}
+
+/*
+ * Things we don't want to show in print view
+ */
+
+div#navigation {
+	display: none;
+}
+
+form {
+	display: none; /* Forms are not required in print media */
+}
+
+form * {
+	display: none;
+}
+
+div#searchform { 
+	display: none;
+}
+
+.action {
+	display: none;
+}
+
+a#searchToggle {
+	display: none;
+}
