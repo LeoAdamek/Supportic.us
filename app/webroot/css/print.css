@@ -7,6 +7,17 @@
 @media print
 
 /*
+ * Modest Reset
+ */
+
+* {
+	text-shadow: none; /* No Text Shadows */
+	background: none; /* no backgrounds */
+	border-color: #CCC; /* black borders only */
+	color: black;
+}
+
+/*
  * General overrides
  */
 

@@ -325,7 +325,11 @@ form .input {
 }
 
 form input[type=text] {
-	border: 2px #CCC solid;
+	border: 2px #ACC solid;
+}
+
+form input[type=password] {
+	border: 2px #F55 solid;
 }
 
 form input[type=text].search {
@@ -391,6 +395,10 @@ input[type=checkbox] {
 
 input:focus {
 	box-shadow: 0 0 5px 5px #8babce;
+}
+
+form input[type=password]:focus {
+	box-shadow: 0 0 5px 5px #F55;
 }
 
 div.checkbox label {
