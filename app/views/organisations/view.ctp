@@ -7,7 +7,10 @@
 		Category: <?=$org['OrganisationCategory']['name']?>
 	</p>
 
-	<h3><?php echo $this->Html->link('Submit A Ticket', array('controller' => 'tickets', 'action' => 'add', $org['Organisation']['id'])); ?></h3>
+	<br />
+	<br />
+
+	<?php echo $this->Html->link('Submit A Ticket', array('controller' => 'tickets', 'action' => 'add', $org['Organisation']['id']),array('class' => 'action')); ?>
 
 	<?php if($permissionList['Edit']): ?>
 
