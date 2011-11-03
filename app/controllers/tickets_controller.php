@@ -70,6 +70,7 @@ class TicketsController extends AppController {
 		}
 		$this->set('priorities',
 			array(
+				'Any' => 'Any',
 				'Low' => 'Low',
 				'Normal' => 'Normal',
 				'Important' => 'Important',

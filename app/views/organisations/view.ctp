@@ -9,7 +9,7 @@
 
 	<h3><?php echo $this->Html->link('Submit A Ticket', array('controller' => 'tickets', 'action' => 'add', $org['Organisation']['id'])); ?></h3>
 
-	<?php if($canEdit): ?>
+	<?php if($permissionList['Edit']): ?>
 
 		<?=$this->Html->link('Edit This Organisation', array(
 			'controller' => 'organisations',
@@ -20,3 +20,22 @@
 		))?>
 
 	<?php endif; ?>
+
+<?php if($permissionList['EditPermissions']){ 
+		echo $this->Html->link('Grant Access Privilages', array(
+			'controller' => 'organisations',
+			'action' => 'admin_add_access',
+			$org['Organisation']['id']
+		),array(
+			'class' => 'action'
+		));
+
+		echo $this->Html->link('Edit Access Priviliages', array(
+			'controller' => 'organisations',
+			'action' => 'admin_edit_access',
+			$org['Organisation']['id']
+		),array(
+			'class' => 'action'
+		));
+	} ?>
+

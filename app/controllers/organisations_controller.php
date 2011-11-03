@@ -52,7 +52,11 @@ class OrganisationsController extends AppController {
 
 		if(!empty($org)){
 			$this->set('org',$org);
-			$this->set('canEdit', $this->Organisation->hasPermission($this->Auth->user('id') , 'Edit'));
+			$this->set('permissionList', array(
+				'Edit' => $this->Organisation->hasPermission($this->Auth->user('id') , 'Edit'),
+				'EditPermissions' => $this->Organisation->hasPermission($this->Auth->user('id'), 'EditPermissions'),
+				'Support' => $this->Organisation->hasPermission($this->Auth->user('id'), 'Support')
+			));
 			$this->set('owner', $this->Organisation->getOwner($this->Organisation->field('id')));
 		}
 	}
