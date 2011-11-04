@@ -104,6 +104,21 @@ class OrganisationsController extends AppController {
 		echo json_encode($categories);
 	}
 
+	function search($getData = null){
+		$this->autoRender = false;
+		Configure::write('debug',0);
+		header('Content-type: application/json');
+		
+		$results = $this->Organisation->find('list', array(
+			'fields' => array('Organisation.name'),
+			'conditions' => array(
+				'Organisation.name LIKE' => "{$_GET['term']}%"
+			)
+		));
+
+		echo json_encode( array_values($results) );
+	}
+
 	function add(){
 		/*
 		 * Controller Method for creating a new organisation

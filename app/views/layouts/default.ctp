@@ -10,6 +10,8 @@
 		<?=$this->Html->css('main.css')?>
 		<?=$this->Html->css('print.css', 'stylesheet', array('media' => 'print'))?>
 		<?=$this->Html->script('jQuery.min')?>
+		<?=$this->Html->script('jquery-ui-1.8.16.custom.min')?>
+		<?=$this->Html->css('jqui.css')?>
 		<?=$this->Html->script('vtip-min')?>
 		<?=$scripts_for_layout?>
 		
