@@ -11,6 +11,7 @@
 	<br />
 
 	<?php echo $this->Html->link('Submit A Ticket', array('controller' => 'tickets', 'action' => 'add', $org['Organisation']['id']),array('class' => 'action')); ?>
+	<?php echo $this->Html->link('View Help Articles', array('controller' => 'knowledge_bases', $org['Organisation']['id'], $org['Organisation']['slug']),array('class' => 'action')); ?>
 
 	<?php if($permissionList['Edit']): ?>
 

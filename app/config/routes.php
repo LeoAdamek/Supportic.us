@@ -32,7 +32,6 @@
  */
 Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
-
 /*
  * Make Login/Logout prettier
  */
@@ -47,4 +46,7 @@ Router::connect('/profile/*', array('controller' => 'users', 'action' => 'view')
 
 // My Account
 Router::connect('/my_account', array('controller' => 'users', 'action' => 'edit'));
+
+// KB system
+Router::connect('/kb/*', array('controller' => 'knowledge_bases'));
 ?>

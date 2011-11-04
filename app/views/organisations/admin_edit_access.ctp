@@ -13,6 +13,7 @@
 			<td><?=$permission['Permission']['permissionType']?> <?=$this->Html->link('Edit', array(
 				'controller' => 'permissions',
 				'action' => 'edit',
+				$permission['Organisation']['id'],
 				$permission['Permission']['id']
 			))?></td>
 		</tr>
