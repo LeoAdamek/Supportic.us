@@ -95,6 +95,7 @@ class OrganisationsController extends AppController {
 		$this->autoRender = false;
 		if($parent_id){
 			$categories = $this->Organisation->OrganisationCategory->getChildCategories($parent_id);
+
 		}else{
 			$categories = $this->Organisation->OrganisationCategory->getRootCategories();
 		}
@@ -262,6 +263,7 @@ class OrganisationsController extends AppController {
 
 			}
 		}
+		Configure::write('debug',0); // Deubg Info is broken on this page.
 	}
 
 }

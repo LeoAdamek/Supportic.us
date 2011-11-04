@@ -10,7 +10,7 @@
 
 		<tr>
 			<td><?=$permission['User']['name']?> (<?=$permission['User']['addressName']?>) </td>
-			<td><?=$permission['Permission']['permissionType']?> <?=$this-Html->link('Edit', array(
+			<td><?=$permission['Permission']['permissionType']?> <?=$this->Html->link('Edit', array(
 				'controller' => 'permissions',
 				'action' => 'edit',
 				$permission['Permission']['id']
