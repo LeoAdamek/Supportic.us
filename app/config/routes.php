@@ -48,6 +48,7 @@ Router::connect('/profile/*', array('controller' => 'users', 'action' => 'view')
 Router::connect('/my_account', array('controller' => 'users', 'action' => 'edit'));
 
 // KB system
+Router::connect('/kb/add/*', array('controller' => 'knowledge_bases', 'action' => 'add'));
 Router::connect('/kb/article/*', array('controller' => 'knowledge_bases', 'action' => 'view'));
 Router::connect('/kb/*', array('controller' => 'knowledge_bases'));
 ?>
