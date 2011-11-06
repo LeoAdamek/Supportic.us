@@ -81,7 +81,8 @@ class OrganisationsController extends AppController {
 			$this->Session->setFlash("Invalid Organisation");
 			$this->redirect(array('action' => 'index'));
 		}else{
-			if(!empty($this->data) && $user_isOwner){ // Only the owner can edit an organisation
+			$user_canEdit = $this->Organisation->hasPermission($this->Auth->user('id'), 'Edit');
+			if(!empty($this->data) && $user_canEdit){
 				if($this->Organisation->save($this->data)){
 					$this->Session->setFlash("Changes Made Sucessfully");
 				}
@@ -138,6 +139,12 @@ class OrganisationsController extends AppController {
 				$this->Organisation->Permission->set('permissionType', 'Owner');
 				$this->Organisation->Permission->save();
 
+				// Create a default Tickets category
+				$this->Organisation->Category->create();
+				$this->Organisation->Category->set('organisation_id', $this->Organisation->getInsertId() );
+				$this->Organisation->Category->set('name', 'General Help');
+				$this->Organisation->Category->set('type', 'TICKET');
+				$this->Organisation->Category->save();
 
 				$this->Session->setFlash("Organisation created sucessfully");
 				$this->redirect(array('controller' => 'organisations', 'action' => 'index'));
