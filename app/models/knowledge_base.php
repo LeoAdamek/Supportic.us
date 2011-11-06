@@ -2,6 +2,9 @@
 class KnowledgeBase extends AppModel {
 	var $name = 'KnowledgeBase';
 	var $displayField = 'title';
+
+	var $actsAs = array('Sluggable');
+
 	var $validate = array(
 		'title' => array(
 			'notempty' => array(

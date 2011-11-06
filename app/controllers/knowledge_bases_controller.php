@@ -12,11 +12,19 @@ class KnowledgeBasesController extends AppController {
 	}
 
 	function index($oid = null){
+
+		Configure::write('debug',0);
+
 		if(isset($oid)){
 			$this->KnowledgeBase->Organisation->id = $oid;
 			if($this->KnowledgeBase->Organisation->exists()){
 				
-				// Get the Articles
+				// Get the Articles, Paginate and pass.
+				$this->set('articles', $this->paginate(
+					array(
+						'KnowledgeBase.organisation_id' => $oid
+					)
+				));
 
 			}else{
 				$this->Session->setFlash("This Organisation does not exist.");
@@ -33,5 +41,21 @@ class KnowledgeBasesController extends AppController {
 				));
 		}
 	}
+
+	function view($article_id = null){
+		if(!isset($article_id)){
+			$this->Session->setFlash("No article specified.");
+			$this->redirect(array('controller' => 'organisations'));
+		}else{
+			$this->KnowledgeBase->id = $article_id;
+			if(!$this->KnowledgeBase->exists()){
+				$this->Session->setFlash("This article does not exist");
+				$this->redirect(array('controller' => 'organisations'));
+			}else{
+				$this->set('article',$this->KnowledgeBase->read(null, $article_id));
+			}
+		}
+	}
+
 
 }

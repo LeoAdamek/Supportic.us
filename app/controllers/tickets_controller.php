@@ -25,9 +25,9 @@ class TicketsController extends AppController {
 		$this->autoRender = false;
 		if($org_id){
 			if($parent_id){
-				$categories = $this->Ticket->Category->getChildCategories($org_id, $parent_id);
+				$categories = $this->Ticket->Category->getChildCategories($org_id, $parent_id, "TICKET");
 			}else{
-				$categories = $this->Ticket->Category->getRootCategories($org_id);
+				$categories = $this->Ticket->Category->getRootCategories($org_id, "TICKET");
 			}
 		}else{
 			$categories = null;
