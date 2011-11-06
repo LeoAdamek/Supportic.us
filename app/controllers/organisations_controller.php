@@ -130,6 +130,8 @@ class OrganisationsController extends AppController {
 
 		if(!empty($this->data)){
 			$this->Organisation->create(); // Make a new Organisation
+			App::import('Sanitize');
+			$this->data['Organisation']['name'] = Sanitize::html($this->data['Organisation']['name']);
 			if($this->Organisation->save($this->data)){
 
 				// Make sure that the user who created this organisation is set as its owner.
