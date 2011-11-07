@@ -39,7 +39,7 @@
 					'controller' => 'tickets',
 					'action' => 'view',
 					$ticket['Ticket']['id']
-				));
+				), array('escape' => false));
 				?>
 			</td>
 			<td> 

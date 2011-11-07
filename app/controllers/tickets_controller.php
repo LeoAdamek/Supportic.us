@@ -100,7 +100,11 @@ class TicketsController extends AppController {
 					$this->Ticket->set('user_id', $this->Auth->user('id'));
 					$this->Ticket->set('organisation_id', $org_id);
 					$this->Ticket->set('status','Unresolved');
-					if($this->Ticket->validates() && $this->Ticket->save($this->data) && $this->Ticket->Message->validates()){
+
+					App::import('Sanitize');
+					$this->Ticket->set('title', Sanitize::html($this->data['Ticket']['title']));
+
+					if($this->Ticket->validates() && $this->Ticket->save() && $this->Ticket->Message->validates()){
 						// The Ticket was Saved Sucessfully
 						$this->Session->setFlash("The Ticket Has Been Saved.");
 						$ticket = $this->Ticket->read();
