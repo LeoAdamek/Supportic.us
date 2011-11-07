@@ -30,7 +30,9 @@
 	'action' => 'view',
 	$org['Organisation']['id'],
 	$org['Organisation']['slug']
-))?>
+	),
+	array('escape' => false)
+)?>
 			
 			</td>
 			<td><?=$org['OrganisationCategory']['name']?></td>

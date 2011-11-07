@@ -7,7 +7,8 @@ class OrganisationsController extends AppController {
 		'limit' => 25,
 		'order' => array(
 			'Organisation.name' => 'asc'
-		)
+		),
+		'escape' => false
 	);
 
 	var $components = array('Email');
@@ -290,4 +291,22 @@ class OrganisationsController extends AppController {
 		Configure::write('debug',0); // Deubg Info is broken on this page.
 	}
 
+	function my_organisations(){
+		/*
+		 * @about: Shows the user all of their organisations.
+		 */
+		$uid = $this->Auth->user('id');
+
+		$Organisations = $this->Organisation->Permission->find('all',
+			array(
+				'conditions' => array(
+					'Permission.user_id' => $uid
+				),
+				'group' => 'Permission.organisation_id'
+			)
+		);
+
+		$this->set('Organisations',$Organisations);
+
+	}
 }
