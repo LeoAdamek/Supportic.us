@@ -35,7 +35,7 @@
 )?>
 			
 			</td>
-			<td><?=$org['OrganisationCategory']['name']?></td>
+			<td><?=$org['crumbs']?></td>
 			<td><?=$this->Html->image('flags/'.low($org['Country']['code']).'.png')?> <?=$org['Country']['name']?></td>
 		</tr>
 	<?php endforeach; ?>

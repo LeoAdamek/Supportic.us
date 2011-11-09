@@ -58,4 +58,21 @@ class OrganisationCategory extends AppModel {
 		));
 		return $children;
 	}
+
+	function breadcrumbs($category_id = null){
+		if($category_id){
+			$this->id = $category_id;
+		}
+
+		$crumbs = $this->field('name');
+
+		while($this->field('parent') != null){
+			$this->id = $this->field('parent');
+			$next_crumb = $this->field('name') . ' > ';
+			$crumbs = $next_crumb . $crumbs;
+		}
+
+		return $crumbs;
+	}
+
 }

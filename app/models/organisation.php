@@ -169,10 +169,15 @@ class Organisation extends AppModel {
 			return $results; // Do nothing if the organisations were queried as an assosiation.
 		}
 
+		$this->recursive = -1;
+		$this->OrganisationCategory->recursive = -1;
+
 		foreach($results as $index => $values){
 			if(isset($values['Organisation']['id'])){
 				$owner = $this->getOwner( $values['Organisation']['id'] );
-				$results[$index]['User'] = $owner['User']; // Set the owner to the 'User' Model for the organisation
+				$results[$index]['User'] = $owner['User'];
+				$crumbs = $this->OrganisationCategory->breadcrumbs($this->field('organisationCategory_id'));
+				$results[$index]['crumbs'] = $crumbs;
 			}
 		}
 		return $results;
