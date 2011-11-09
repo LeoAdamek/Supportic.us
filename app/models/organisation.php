@@ -170,13 +170,13 @@ class Organisation extends AppModel {
 		}
 
 		$this->recursive = -1;
-		$this->OrganisationCategory->recursive = -1;
+		$this->OrganisationCategory->recursive = 0;
 
 		foreach($results as $index => $values){
 			if(isset($values['Organisation']['id'])){
 				$owner = $this->getOwner( $values['Organisation']['id'] );
 				$results[$index]['User'] = $owner['User'];
-				$crumbs = $this->OrganisationCategory->breadcrumbs($this->field('organisationCategory_id'));
+				$crumbs = $this->OrganisationCategory->breadcrumbs($values['Organisation']['organisationCategory_id']);
 				$results[$index]['crumbs'] = $crumbs;
 			}
 		}
