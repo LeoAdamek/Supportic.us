@@ -1,0 +1,3 @@
+$(document).ready(function(){
+	$('.menu').superfish(); // Make a menu of me...
+});

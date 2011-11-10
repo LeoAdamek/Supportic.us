@@ -540,3 +540,16 @@ div#searchform {
 	-webkit-border-radius: 10px;
 	border: 2px solid #bbcee2;
 }
+
+/*
+ * Nested multi-layer dropdown menu
+ */
+
+.menu, .menu * { 
+	margin: 0;
+	padding: 0;
+}
+
+.menu { 
+	line-height: 1.0;
+}

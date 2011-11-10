@@ -10,6 +10,8 @@
 		<?=$this->Html->css('main.css')?>
 		<?=$this->Html->css('print.css', 'stylesheet', array('media' => 'print'))?>
 		<?=$this->Html->script('jQuery.min')?>
+		<?=$this->Html->script('superfish')?>
+		<?=$this->Html->script('menu')?>
 		<?=$this->Html->script('jquery-ui-1.8.16.custom.min')?>
 		<?=$this->Html->css('jqui.css')?>
 		<?=$this->Html->script('vtip-min')?>
@@ -27,10 +29,14 @@
 		<div id="navigation">
 
 				<?php // The Global Navigation ?>
-				<ul>
+				<ul class="menu">
 					<li><?=$this->Html->link('Home','/')?></li>
 					<li><?=$this->Html->link('Organisations', array('controller' => 'Organisations', 'action' => 'index'))?></li>
-					<li><?=$this->Html->link('My Tickets', array('controller' => 'Tickets', 'action' => 'my_tickets'))?></li>
+					<li>My Account
+						<ul>
+							<li><?=$this->Html->link('My Tickets', array('controller' => 'Tickets', 'action' => 'my_tickets'))?></li>
+						</ul>
+					</li>
 				</ul>
 
 				<?php // End Global Navigation ?>
