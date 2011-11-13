@@ -486,16 +486,17 @@ div#navigation ul {
 div#navigation  li {
 	display: inline;
 	float: left;
-	border: none;
-	border-width: 1px 1px 0px 1px;
-	margin: 0 0.5em 0 0;
+	border: 1px solid #333;
+	border-width: 0px 1px 0px 0px;
+	margin: 0 0em 0 0;
 	height: 48px;
 	vertical-align: middle;
+	width: 120px;
+	text-align: center;
 }
 
 div#navigation li a {
 	vertical-align: middle;
-	padding: 0 1em;
 	color: #FFF;
 	text-decoration: none;
 	height: 46px;
@@ -541,15 +542,28 @@ div#searchform {
 	border: 2px solid #bbcee2;
 }
 
-/*
- * Nested multi-layer dropdown menu
- */
-
-.menu, .menu * { 
-	margin: 0;
-	padding: 0;
+div#naviagion ul li ul {
+	display: none;
 }
 
-.menu { 
-	line-height: 1.0;
+div#navigation ul li ul li {
+	display: none;
+	width: 120px;
+}
+
+div#navigation ul li:hover ul {
+	display: block;
+	position: relative;
+	top: 20px;
+	width: 100px;
+	background: #171717;
+}
+
+div#navigation ul li:hover ul li {
+	display: block;
+	background: #171717;
+}
+
+div#navigation ul li:hover ul li:hover {
+	background: orange;
 }
