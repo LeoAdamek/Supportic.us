@@ -33,6 +33,7 @@
 					<li>My Account
 						<ul>
 							<li><?=$this->Html->link('My Tickets', array('controller' => 'Tickets', 'action' => 'my_tickets'))?></li>
+							<li><?=$this->Html->link('My Organisations', array('controller' => 'Organisations', 'action' => 'my_organisations'))?></li>
 						</ul>
 					</li>
 				</ul>

@@ -15,7 +15,7 @@ class OrganisationsController extends AppController {
 
 	function beforeFilter(){
 		parent::beforeFilter();
-		$this->Auth->deny('add','edit','delete','manage');
+		$this->Auth->deny('add','edit','delete','manage','my_organisations');
 	}
 
 	function index(){

@@ -81,8 +81,38 @@ class TicketsController extends AppController {
 
 	function my_org_tickets(){
 		if(empty($this->data)){
-			// The user did not submit a search
-			// Display all
+			
+			$organisations = $this->Ticket->Organisation->Permission->find('list',
+				array(
+					'fields' => 'Permission.organisation_id'
+				),
+				array(
+					'conditions' => array(
+						'user_id' => $this->Auth->user('id'),
+						'permissionType' => array('Support','Owner')
+					)
+				)
+			);
+
+			$tickets = array();
+
+			foreach($organisations as $index => $id){
+				$o_tickets = $this->Ticket->find('all',
+					array(
+						'conditions' => array(
+							'Ticket.organisation_id' => $id,
+							'Ticket.status' => 'Unresolved'
+						)
+					)
+				);
+
+				if(!empty($o_tickets)){
+					$tickets = array_merge($tickets, $o_tickets);
+				}
+			}
+
+			$this->set('tickets', $tickets);
+
 		}else{
 			// User submitted a search
 			// Process it
@@ -141,7 +171,18 @@ class TicketsController extends AppController {
 		if($this->Ticket->exists()){
 			// The Ticket is real
 			$ticket = $this->Ticket->findById($ticket_id);
-			if($ticket['User']['id'] != $this->Auth->user('id') && !$this->Ticket->Organisation->hasPermission($this->Auth->user('id'), 'Tickets')){
+
+			$permission = $this->Ticket->Organisation->hasPermission($this->Auth->user('id'), $ticket['Organisation']['id'], 'Support');
+			$owner = $this->Auth->user('id') == $ticket['Ticket']['user_id'];
+
+			$canView = $permission && $owner;
+
+
+			$this->set('permission',$permission);
+			$this->set('owner',$owner);
+			$this->set('canview',$canView);
+
+			if($canView){
 				$this->Session->setFlash("This is not your ticket.");
 				$this->redirect(array('controller'=>'organisations','action'=>'index'));
 			}else{

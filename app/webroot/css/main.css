@@ -491,7 +491,7 @@ div#navigation  li {
 	margin: 0 0em 0 0;
 	height: 48px;
 	vertical-align: middle;
-	width: 120px;
+	width: 140px;
 	text-align: center;
 }
 
@@ -548,7 +548,7 @@ div#naviagion ul li ul {
 
 div#navigation ul li ul li {
 	display: none;
-	width: 120px;
+	width: 140px;
 }
 
 div#navigation ul li:hover ul {
@@ -566,4 +566,13 @@ div#navigation ul li:hover ul li {
 
 div#navigation ul li:hover ul li:hover {
 	background: orange;
+}
+
+table tr.ticket-important td {
+	background-color: #FFCC00;
+}
+
+table tr.ticket-urgent td {
+	background-color: #FF5500;
+	color: white;
 }
