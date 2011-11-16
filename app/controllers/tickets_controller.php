@@ -177,11 +177,6 @@ class TicketsController extends AppController {
 
 			$canView = $permission && $owner;
 
-
-			$this->set('permission',$permission);
-			$this->set('owner',$owner);
-			$this->set('canview',$canView);
-
 			if($canView){
 				$this->Session->setFlash("This is not your ticket.");
 				$this->redirect(array('controller'=>'organisations','action'=>'index'));
@@ -193,12 +188,68 @@ class TicketsController extends AppController {
 						'Message.ticket_id' => $ticket_id
 					)
 				)));
+				$this->set('statuses',
+					array(
+						'Unresolved' => 'Unresolved',
+						'Resolved' => 'Resolved',
+						'Closed' => 'Closed'
+					)
+				);
 			}
 		}else{
 			$this->Session->setFlash("Invalid Ticket.");
 		}
 	}
 
+	function update_status($ticket_id = null){
+		/*
+		 * @about: Allows the current status of a ticket to be altered.
+		 * @requestType: Expects an AJAX request.
+		 */
+
+		// This is an ajax request.
+		$this->autoRender = false;
+		Configure::write('debug', 0);
+		header('Content-Type: application/json');
+
+		$this->Ticket->id = $ticket_id;
+
+		if($this->Ticket->exists()){
+			$ticket = $this->Ticket->findById($ticket_id);
+
+			$permission = $this->Ticket->Organisation->hasPermission($this->Auth->user('id'), $this->Ticket->field('organisation_id'), 'Support');
+			$ticket_owner = $this->Ticket->field('user_id') == $this->Auth->user('id');
+			$canUpdate = $permission && $ticket_owner;
+
+			if(!$canUpdate){
+				if($this->Ticket->saveField('status', $this->data['Ticket']['status'])){
+					echo json_encode(
+						array(
+							'success' => true,
+							'message' => "The Ticket was upated sucessfully."
+						)
+					);
+				}else{
+					echo json_encode(
+						array(
+							'success' => false,
+							'message' => "Where was an unexpected error updating the ticket."
+						)
+					);
+
+				}
+
+			}else{
+				echo json_encode(
+					array(
+						'success' => false,
+						'message' => "You are not permitted to alter the status of this ticket."
+					)
+				);
+			}
+		}
+
+	}
 
 }
 

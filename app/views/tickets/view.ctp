@@ -1,3 +1,5 @@
+<?=$this->Html->script('tickets/view')?>
+
 <h2>Ticket: <?=$ticket['Ticket']['title']?></h2>
 
 	<h3>Posted By: <?php
@@ -29,3 +31,14 @@
 		$ticket['Ticket']['slug']
 	))?>
 
+	<a id="updatestatus">Update the Status of this ticket</a>
+
+<div id="update_dialog" title="Update this ticket" style="display:none">
+	<h3>Update This Ticket</h3>
+
+	<?php
+		echo $this->Form->create('Ticket', array('controller' => 'tickets', 'action' => "update_status/{$ticket['Ticket']['id']}"));
+		echo $this->Form->input('Ticket.status');
+		echo $this->Form->submit('Update');
+	?>
+</div>
