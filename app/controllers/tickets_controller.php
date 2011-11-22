@@ -44,23 +44,21 @@ class TicketsController extends AppController {
 		 */
 
 		if(empty($this->data)){
-			$this->set('tickets',$this->paginate(
-					array(
-						'Ticket.user_id' => $this->Auth->user('id')
-					)
-				));
+			$tickets = $this->Ticket->find('all',array(
+				'user_id' => $this->Auth->user('id')
+			));
 		}else{
 			// Process a search request
 			if($this->data['Ticket']['priority'] == 'Any'){
-				$this->set('tickets', $this->paginate(
-					array(
+				$tickets = $this->Ticket->find('all',array(
+					'conditions' => array(
 						'Ticket.user_id' => $this->Auth->user('id'),
 						'Ticket.title LIKE' => "%{$this->data['Ticket']['title']}%"
 					)
 				));
 			}else{
-				$this->set('tickets', $this->paginate(
-					array(
+				$tickets = $this->Ticket->find('all',array(
+					'conditions' => array(
 						'Ticket.user_id' => $this->Auth->user('id'),
 						'Ticket.title LIKE' => "%{$this->data['Ticket']['title']}%",
 						'Ticket.priority' => $this->data['Ticket']['priority']
@@ -68,6 +66,15 @@ class TicketsController extends AppController {
 				));
 			}
 		}
+
+		// Add the last posted message to the ticket info
+		foreach($tickets as $id => $ticket){
+			$tickets[$id]['LastMessage'] = $this->Ticket->Message->find('first',array(
+				'Message.ticket_id' => $ticket['Ticket']['id'],
+				'order' => 'Message.postdate DESC'
+			));
+		}
+
 		$this->set('priorities',
 			array(
 				'Any' => 'Any',
@@ -77,6 +84,8 @@ class TicketsController extends AppController {
 				'Urgent' => 'Urgent'
 			)
 		);		
+
+		$this->set('tickets',$tickets);
 	}
 
 	function my_org_tickets(){

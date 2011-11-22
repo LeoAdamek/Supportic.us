@@ -20,15 +20,12 @@
 </div>
 <a id="searchToggle">Search These Tickets</a>
 
-
-
-
 	<table id="tickets">
 		<tr>
-			<th span="col"><?=$this->Paginator->sort('Date','Ticket.postdate')?></th>
-			<th span="col"><?=$this->Paginator->sort('Title','Ticket.title')?></th>
-			<th span="col"><?=$this->Paginator->sort('Organisation','Organisation.name')?></th>
-			<th span="col"><?=$this->Paginator->sort('Last Reply','Message.postdate')?></th>
+			<th span="col">Posted</th>
+			<th span="col">Title</th>
+			<th span="col">Organisation</th>
+			<th span="col">Last Message</th>
 		</tr>
 
 	<?php foreach($tickets as $ticket): ?>
@@ -45,7 +42,9 @@
 			<td> 
 				<?=$ticket['Organisation']['name']?>
 			</td>
-			<td>[[LAST POST]]</td>
+			<td>
+				<?=$this->Time->timeAgoInWords($ticket['LastMessage']['Message']['postdate'])?>
+			</td>
 		</tr>
 	<?php endforeach; ?>
 
