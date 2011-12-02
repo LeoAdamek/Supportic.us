@@ -43,3 +43,12 @@
 		));
 	} ?>
 
+<?php if($permissionList['Support']){
+	echo $this->Html->link('View Tickets', array(
+		'controller' => 'tickets',
+		'action' => 'my_org_tickets',
+	),array(
+		'class' => 'action'
+	));
+}
+?>

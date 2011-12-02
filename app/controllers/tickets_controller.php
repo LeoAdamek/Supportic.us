@@ -37,6 +37,19 @@ class TicketsController extends AppController {
 		echo json_encode($categories);
 	}
 
+	function home_view(){
+		if($this->Auth->user('id')){
+			$tickets = $this->Ticket->find('all',array(
+				'conditions' => array(
+					'user_id' => $this->Auth->user('id'),
+					'status' => 'Unresolved'
+				),
+				'order' => 'postdate DESC',
+				'limit' => '10'
+			));
+			$this->set('tickets',$tickets);
+		}
+	}
 
 	function my_tickets(){
 		/*

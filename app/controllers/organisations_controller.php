@@ -50,8 +50,21 @@ class OrganisationsController extends AppController {
 
 	function view($org_id = NULL){
 		$org = $this->Organisation->findById($org_id);
-
+		
 		if(!empty($org)){
+
+			if($org['Organisation']['isPrivate'] && !$this->Organisation->hasPermission($this->Auth->user('id'), 'Private')){
+				$this->Session->setFlash("You do not have access to this private organisation");
+				$this->redirect(
+					array(
+						'controller' => 'organisations',
+						'action' => 'index'
+					)
+				);
+				return;
+			}
+
+
 			$this->set('org',$org);
 			$this->set('permissionList', array(
 				'Edit' => $this->Organisation->hasPermission($this->Auth->user('id') , 'Edit'),
