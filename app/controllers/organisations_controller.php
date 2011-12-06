@@ -247,6 +247,8 @@ class OrganisationsController extends AppController {
 		$this->set('permissionTypes', array(
 			'Edit' => 'Can Edit this Organisation',
 			'EditPermissions' => 'Can Edit the permissions within this Organisation',
+			'Support' => 'Can Answer Support tickets',
+			'Private' => 'Can Access this Organisation (if it is Private)'
 		));
 
 	}
@@ -302,6 +304,34 @@ class OrganisationsController extends AppController {
 			}
 		}
 		Configure::write('debug',0); // Deubg Info is broken on this page.
+	}
+
+
+	function analytics($orgId = null){
+		if(empty($orgId)){
+			$this->Session->setFlash("No Organisation Enetered");
+			$this->redirect(array(
+				'controller' => 'organisations',
+				'action' => 'index'
+			));
+		}else{
+			$this->Organisation->id = $orgId;
+			if(!$this->Organisation->exists()){
+				$this->Session->setFlash("Invalid Organisation Entered");
+				$this->redirect(array(
+					'controller' => 'organisations',
+					'action' => 'index'
+				));
+			}else{
+				if(!$this->Organistation->hasPermission($this->Auth->user('id'), 'Owner')){
+					$this->Session->setFlash("You do not own this organisation");
+					$this->redirect(array(
+						'controller' => 'organisation',
+						'action' => 'index'
+					));
+				}
+			}
+		}
 	}
 
 	function my_organisations(){
