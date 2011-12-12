@@ -1,5 +1,5 @@
 SUPPORTIC.US
-============
+===========
 ##### Online Customer and Corporate Support.
 
 About Supportic.us
@@ -31,6 +31,9 @@ either to customers, associates, or other members of staff.
 ### What is Supportic.us Written In?
 *Supportic.us* is written in PHP, utilising the [CakePHP][CakePHP] MVC Framework, [CakePHP][CakePHP] is Open-Source, you can find its source-code on github [here](https://github.com/cakephp/cakephp).
 
+### Where can I find Supportic.us?
+*Supportic.us* can be found [here: https://supportic.us][Supportic.us]
+
 
 Credits to Third-Party Libraries
 --------------------------------
@@ -48,3 +51,4 @@ The following third party libraries were used in *Supportic.us*
 
 
 [CakePHP]: http://cakephp.org/ "Cake PHP"
+[Supportic.us]: https://supportic.us/ "Supportic.us"
