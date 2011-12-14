@@ -30,4 +30,12 @@ Therefore the best way to use *Supportic.us* is on the official [Supportic.us We
 This software package is provdied to freely distribute the source code of *Supportic.us* to those who wish to have an understanding
 of the systems, ideas and implimentations used in its development.
 
+### Demo login credentials
+To test *Supportic.us* you can either register your own account, or you can use the following demo login:
 
++ E-mail: mjhkfrth@sharklasers.com
++ Password: teapot
++ Name: Elżbieta Jasińsk
++ Address Name: Elizibeta
+
+**Please do not change the password for the demo login**
