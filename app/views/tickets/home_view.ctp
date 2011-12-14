@@ -59,6 +59,7 @@
 		 */
 	?>
 
+	<h2>Supportic.us</h2>
 	
 	<div style="padding-left: 20px;">
 		<h4>What is Supportic.us?</h4>
